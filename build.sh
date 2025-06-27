@@ -1,1 +1,1 @@
-fontmake -u path/to/font.ufo -o otf
+fontmake -u abugida.ufo -o otf

@@ -12,17 +12,10 @@
             "program": "build.sh"
         },
         {
-            "name": "Generate Ligatures",
+            "name": "Run Script",
             "type": "debugpy",
             "request": "launch",
-            "program": "scripts/liga.py",
-            "console": "integratedTerminal"
-        },
-        {
-            "name": "Generate Glyphs",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "scripts/glyph.py",
+            "program": "script.py",
             "console": "integratedTerminal"
         }
     ]
