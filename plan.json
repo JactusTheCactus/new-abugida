@@ -1,0 +1,66 @@
+{
+	"requirements": {
+		"platform": [
+			"windows",
+			"browser"
+		],
+		"cost": "free",
+		"support": {
+			"ligatures": {
+				"pairs": {
+					"/(?:Consonant|Null)(?:Vowel)?/gi": [
+						"23 Consonants (+1 Null Consonant: Xx)",
+						"9 Vowels (+1 for non-vowels; sole consonants)",
+						"240 Characters"
+					]
+				}
+			},
+			"characters (unicameral)": {
+				"consonants": {
+					"basic": [
+						"b",
+						"c",
+						"d",
+						"f",
+						"g",
+						"h",
+						"j",
+						"k",
+						"l",
+						"m",
+						"n",
+						"p",
+						"r",
+						"s",
+						"t",
+						"v",
+						"w",
+						"y",
+						"z"
+					],
+					"special": [
+						"ð",
+						"ś",
+						"þ",
+						"ź"
+					]
+				},
+				"vowels": {
+					"basic": [
+						"a",
+						"e",
+						"i",
+						"o",
+						"u"
+					],
+					"special": [
+						"á",
+						"í",
+						"ó",
+						"ú"
+					]
+				}
+			}
+		}
+	}
+}
