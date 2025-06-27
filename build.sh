@@ -1,1 +1,2 @@
-fontmake -u abugida.ufo -o otf
+#!/bin/bash
+fontmake -u Abugida-Regular.ufo -o otf
