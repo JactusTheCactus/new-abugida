@@ -1,0 +1,29 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "bashdb",
+            "request": "launch",
+            "name": "Build Font",
+            "cwd": "${workspaceFolder}",
+            "program": "build.sh"
+        },
+        {
+            "name": "Generate Ligatures",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "scripts/liga.py",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Generate Glyphs",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "scripts/glyph.py",
+            "console": "integratedTerminal"
+        }
+    ]
+}

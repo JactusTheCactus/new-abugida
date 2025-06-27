@@ -1,0 +1,1 @@
+fontmake -u path/to/font.ufo -o otf
