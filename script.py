@@ -12,29 +12,37 @@ vowels = [
 	"","a","á","e","i",
 	"í","o","ó","u","ú"
 ]
-glyphList = [
-	[
-		".notdef",
+glyphList = {
+	".notdef": [
 		[
-			[
-				(50,0),
-				(450,0),
-				(450,700),
-				(50,700)
-			]
+			(50,0),
+			(450,0),
+			(450,700),
+			(50,700)
 		]
 	],
-	[
-		"a",
+	"a": [
 		[
-			[
-				(100, 0),
-				(300, 700),
-				(500, 0)
-			]
+			(100, 0),
+			(300, 700),
+			(500, 0)
 		]
 	]
-]
+}
+for g in glyphList:
+	glyph = font.newGlyph(g)
+	if g != ".notdef":
+		glyph.unicode = ord(g)
+	glyph.width = 600
+	pen = glyph.getPen()
+	for contour in glyphList[g]:
+		for i, pt in enumerate(contour):
+			if i == 0:
+				pen.moveTo(pt)
+			else:
+				pen.lineTo(pt)
+		pen.closePath()
+"""
 for g in glyphList:
 	glyph = font.newGlyph(g[0])
 	if g != glyphList[0]:
@@ -48,6 +56,7 @@ for g in glyphList:
 			else:
 				pen.lineTo(pt)
 		pen.closePath()
+"""
 
 # REQUIRED FONT INFO FIELDS
 font.info.familyName = "Abugida"
@@ -73,10 +82,9 @@ with open(features_path, "w", encoding="utf-8") as f:
 		for v in vowels:
 			if v:
 				lig_name = c + v
-			else:
-				lig_name = c
-			if v:
 				f.write(f"    sub {c} {v} by {lig_name}.liga;\n")
 			else:
-				f.write(f"    sub {c} by {lig_name}.liga;\n")
+				if c != "x":
+					lig_name = c
+					f.write(f"    sub {c} by {lig_name}.liga;\n")
 	f.write("} liga;\n")
