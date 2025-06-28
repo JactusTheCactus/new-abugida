@@ -30,7 +30,6 @@ for g in glyphList:
 			else:
 				pen.lineTo(pt)
 		pen.closePath()
-# REQUIRED FONT INFO FIELDS
 font.info.familyName = "Abugida"
 font.info.styleName = "Regular"
 font.info.fullName = f"{font.info.familyName} {font.info.styleName}"
