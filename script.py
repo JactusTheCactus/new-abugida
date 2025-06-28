@@ -1,5 +1,15 @@
 from defcon import Font
 import subprocess
+def toTuple(obj):
+    if isinstance(obj, list):
+        if len(obj) == 2 and all(isinstance(i, int) for i in obj):
+            return tuple(obj)
+        else:
+            return [convert_to_tuples(item) for item in obj]
+    elif isinstance(obj, dict):
+        return {k: convert_to_tuples(v) for k, v in obj.items()}
+    else:
+        return obj
 font = Font()
 consonants = ["b","c","d","ð","f","g","h","j","k","l","m","n","p","r","s","ś","t","v","w","x","y","z","ź","þ"]
 vowels = ["","a","á","e","i","í","o","ó","u","ú"]
