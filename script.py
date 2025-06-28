@@ -7,46 +7,46 @@ glyphList = {
 	".notdef": [
 		[
 			(0,0),
-			(0,700),
-			(50,700),
+			(0,1000),
+			(50,1000),
 			(50,0)
 		],
 		[
-			(600,0),
-			(600,700),
-			(550,700),
-			(550,0)
+			(700,0),
+			(700,1000),
+			(650,1000),
+			(650,0)
 		],
 		[
 			(0,0),
 			(0,50),
-			(600,50),
-			(600,0)
+			(700,50),
+			(700,0)
 		],
 		[
-			(0,650),
-			(0,700),
-			(600,700),
-			(600,650)
+			(0,950),
+			(0,1000),
+			(700,1000),
+			(700,950)
 		],
 		[
 			(0,50),
-			(550,700),
-			(600,650),
+			(650,1000),
+			(700,950),
 			(50,0)
 		],
 		[
-			(0,650),
-			(50,700),
-			(600,50),
-			(550,0)
+			(0,950),
+			(50,1000),
+			(700,50),
+			(650,0)
 		]
 	],
 	"a": [
 		[
-			(100, 0),
-			(300, 700),
-			(500, 0)
+			(0, 0),
+			(350, 1000),
+			(700, 0)
 		]
 	]
 }
@@ -54,7 +54,7 @@ for g in glyphList:
 	glyph = font.newGlyph(g)
 	if g != ".notdef":
 		glyph.unicode = ord(g)
-	glyph.width = 600
+	glyph.width = 700
 	pen = glyph.getPen()
 	for contour in glyphList[g]:
 		for i, pt in enumerate(contour):
@@ -72,7 +72,7 @@ font.info.openTypeNameVersion = "Version 1.000"
 font.info.unitsPerEm = 1000
 font.info.ascender = 800
 font.info.descender = -200
-font.info.capHeight = 700
+font.info.capHeight = 1000
 font.info.xHeight = 500
 font.info.baseline = 0
 ufoName = f"{font.info.postscriptFontName}.ufo"
