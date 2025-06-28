@@ -5,7 +5,7 @@
 			"name": "Build",
 			"type": "debugpy",
 			"request": "launch",
-			"program": "build.py",
+			"program": "script.py",
 			"console": "integratedTerminal"
 		}
 	]
