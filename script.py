@@ -1,5 +1,6 @@
 from defcon import Font
 import subprocess
+import json
 def toTuple(obj):
     if isinstance(obj, list):
         if len(obj) == 2 and all(isinstance(i, int) for i in obj):
@@ -10,56 +11,12 @@ def toTuple(obj):
         return {k: convert_to_tuples(v) for k, v in obj.items()}
     else:
         return obj
+with open("data.json", "r") as f:
+    data = json.load(f)
+glyphList = toTuple(data)
 font = Font()
 consonants = ["b","c","d","ð","f","g","h","j","k","l","m","n","p","r","s","ś","t","v","w","x","y","z","ź","þ"]
 vowels = ["","a","á","e","i","í","o","ó","u","ú"]
-glyphList = {
-	".notdef": [
-		[
-			(0,0),
-			(0,1000),
-			(50,1000),
-			(50,0)
-		],
-		[
-			(700,0),
-			(700,1000),
-			(650,1000),
-			(650,0)
-		],
-		[
-			(0,0),
-			(0,50),
-			(700,50),
-			(700,0)
-		],
-		[
-			(0,950),
-			(0,1000),
-			(700,1000),
-			(700,950)
-		],
-		[
-			(0,50),
-			(650,1000),
-			(700,950),
-			(50,0)
-		],
-		[
-			(0,950),
-			(50,1000),
-			(700,50),
-			(650,0)
-		]
-	],
-	"a": [
-		[
-			(0, 0),
-			(350, 1000),
-			(700, 0)
-		]
-	]
-}
 for g in glyphList:
 	glyph = font.newGlyph(g)
 	if g != ".notdef":
