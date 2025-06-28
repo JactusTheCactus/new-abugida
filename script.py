@@ -42,27 +42,11 @@ for g in glyphList:
 			else:
 				pen.lineTo(pt)
 		pen.closePath()
-"""
-for g in glyphList:
-	glyph = font.newGlyph(g[0])
-	if g != glyphList[0]:
-		glyph.unicode = ord(g[0])
-	glyph.width = 600
-	pen = glyph.getPen()
-	for contour in g[1]:
-		for i, pt in enumerate(contour):
-			if i == 0:
-				pen.moveTo(pt)
-			else:
-				pen.lineTo(pt)
-		pen.closePath()
-"""
-
 # REQUIRED FONT INFO FIELDS
 font.info.familyName = "Abugida"
 font.info.styleName = "Regular"
-font.info.fullName = "Abugida Regular"
-font.info.postscriptFontName = "Abugida-Regular"
+font.info.fullName = f"{font.info.familyName} {font.info.styleName}"
+font.info.postscriptFontName = f"{font.info.familyName}-{font.info.styleName}"
 font.info.openTypeNameVersion = "Version 1.000"
 font.info.unitsPerEm = 1000
 font.info.ascender = 800
@@ -70,8 +54,7 @@ font.info.descender = -200
 font.info.capHeight = 700
 font.info.xHeight = 500
 font.info.baseline = 0
-
-ufoName = f"{font.info.familyName}-{font.info.styleName}.ufo"
+ufoName = f"{font.info.postscriptFontName}.ufo"
 font.save(ufoName)
 bash = f"fontmake -u {ufoName} -o otf".split()
 subprocess.run(bash, check=True)
