@@ -189,7 +189,6 @@ feature liga {
     sub w ó by wó.liga;
     sub w u by wu.liga;
     sub w ú by wú.liga;
-    sub x by x.liga;
     sub x a by xa.liga;
     sub x á by xá.liga;
     sub x e by xe.liga;
