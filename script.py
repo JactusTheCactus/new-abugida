@@ -2,6 +2,42 @@
 V: 800 - 1000
 C: 0 - 600
 """
+uni = {
+	"b":"b",
+	"c":"c",
+	"d":"d",
+	"ð":"eth",
+	"f":"f",
+	"g":"g",
+	"h":"h",
+	"j":"j",
+	"k":"k",
+	"l":"l",
+	"m":"m",
+	"n":"n",
+	"ŋ":"eng",
+	"p":"p",
+	"r":"r",
+	"s":"s",
+	"ś":"sacute",
+	"t":"t",
+	"v":"v",
+	"w":"w",
+	"x":"x",
+	"y":"y",
+	"z":"z",
+	"ź":"zacute",
+	"þ":"thorn",
+	"a":"a",
+	"e":"e",
+	"é":"eacute",
+	"i":"i",
+	"í":"iacute",
+	"o":"o",
+	"ó":"oacute",
+	"u":"u",
+	"ú":"uacute",
+}
 from defcon import Font
 import subprocess
 import json
@@ -38,6 +74,7 @@ for g in glyphList:
 	glyph = font.newGlyph(g)
 	if g != ".notdef":
 		glyph.unicode = ord(g)
+		glyph.name = uni.get(g)
 	pen = glyph.getPen()
 	for contour in glyphList[g]:
 		for i, pt in enumerate(contour):
@@ -58,9 +95,11 @@ font.info.baseline = 0
 ufoName = f"{font.info.postscriptFontName}.ufo"
 for c in consonants:
 	if c in font:
+		c = uni.get(c)
 		for v in vowels:
 			if v in font:
 				if v:
+					v = uni.get(v)
 					lig_name = "_".join([c,v]) + ".liga"
 					if lig_name in font:
 						continue
@@ -80,8 +119,10 @@ features_path = f"{ufoName}/features.fea"
 with open(features_path, "w", encoding="utf-8") as f:
 	f.write("feature liga {\n")
 	for c in consonants:
+		c = uni.get(c)
 		for v in vowels:
 			if v:
+				v = uni.get(v)
 				lig_name = f"{c}_{v}"
 				f.write(f"    sub {c} {v} by {lig_name}.liga;\n")
 			else:

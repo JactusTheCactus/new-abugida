@@ -44,6 +44,12 @@
     <string>d_u.liga.glif</string>
     <key>e</key>
     <string>e.glif</string>
+    <key>eacute</key>
+    <string>eacute.glif</string>
+    <key>eng</key>
+    <string>eng.glif</string>
+    <key>eth</key>
+    <string>eth.glif</string>
     <key>f</key>
     <string>f.glif</string>
     <key>f_a.liga</key>
@@ -82,6 +88,8 @@
     <string>h_u.liga.glif</string>
     <key>i</key>
     <string>i.glif</string>
+    <key>iacute</key>
+    <string>iacute.glif</string>
     <key>j</key>
     <string>j.glif</string>
     <key>j_a.liga</key>
@@ -144,6 +152,8 @@
     <string>n_u.liga.glif</string>
     <key>o</key>
     <string>o.glif</string>
+    <key>oacute</key>
+    <string>oacute.glif</string>
     <key>p</key>
     <string>p.glif</string>
     <key>p_a.liga</key>
@@ -180,6 +190,8 @@
     <string>s_o.liga.glif</string>
     <key>s_u.liga</key>
     <string>s_u.liga.glif</string>
+    <key>sacute</key>
+    <string>sacute.glif</string>
     <key>t</key>
     <string>t.glif</string>
     <key>t_a.liga</key>
@@ -192,8 +204,12 @@
     <string>t_o.liga.glif</string>
     <key>t_u.liga</key>
     <string>t_u.liga.glif</string>
+    <key>thorn</key>
+    <string>thorn.glif</string>
     <key>u</key>
     <string>u.glif</string>
+    <key>uacute</key>
+    <string>uacute.glif</string>
     <key>v</key>
     <string>v.glif</string>
     <key>v_a.liga</key>
@@ -254,23 +270,7 @@
     <string>z_o.liga.glif</string>
     <key>z_u.liga</key>
     <string>z_u.liga.glif</string>
-    <key>é</key>
-    <string>é.glif</string>
-    <key>í</key>
-    <string>í.glif</string>
-    <key>ð</key>
-    <string>ð.glif</string>
-    <key>ó</key>
-    <string>ó.glif</string>
-    <key>ú</key>
-    <string>ú.glif</string>
-    <key>þ</key>
-    <string>þ.glif</string>
-    <key>ŋ</key>
-    <string>ŋ.glif</string>
-    <key>ś</key>
-    <string>ś.glif</string>
-    <key>ź</key>
-    <string>ź.glif</string>
+    <key>zacute</key>
+    <string>zacute.glif</string>
   </dict>
 </plist>
