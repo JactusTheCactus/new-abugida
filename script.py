@@ -95,8 +95,8 @@ for c in consonants:
 					v_glyph.draw(tpen)
 					lig.unicode = None
 					setWidth(lig)
-features_path = f"{ufoName}/features.fea"
-with open(features_path, "w", encoding="utf-8") as f:
+fea = f"{ufoName}/features.fea"
+with open(fea, "w", encoding="utf-8") as f:
 	f.write("feature liga {\n")
 	for c in consonants:
 		cU = getUni(c)
@@ -106,23 +106,29 @@ with open(features_path, "w", encoding="utf-8") as f:
 				lig_name = f"{cU}_{vU}"
 				f.write(f"    sub {cU} {vU} by {lig_name}.liga;\n")
 	f.write("} liga;\n")
+font = Font(ufoName)
+with open(fea) as f:
+    feaText = f.read()
+#print(feaText)
+font.features.text = feaText  # Make sure it's set
 font.save(ufoName)
-line = "=" * 50
-print("\n".join([
-	"",
-	line,
-	"",
-	subprocess.run(
-		[
-			"fontmake",
-			"-u",
-			ufoName,
-			"-o",
-			"otf"
-		],
-		capture_output = True,
-		universal_newlines = True,
-		check = True
-	).stderr,
-	line
-]))
+if 1:
+	line = "=" * 50
+	print("\n".join([
+		"",
+		line,
+		"",
+		subprocess.run(
+			[
+				"fontmake",
+				"-u",
+				ufoName,
+				"-o",
+				"otf"
+			],
+			capture_output = True,
+			universal_newlines = True,
+			#check = True
+		).stderr,
+		line
+	]))
