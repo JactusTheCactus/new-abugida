@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<style>
+	@font-face {
+		font-family: "Font";
+		src: url("master_otf/Font-Regular.otf")format("opentype");
+	}
+
+	body {
+		font: 286px"Font", Verdana;
+	}
+</style>
+
+<body>
+	<p id="el"></p>
+</body>
+<script>
+	function removeStrings(targetArray, removeList) {
+		for (let i = targetArray.length - 1; i >= 0; i--) {
+			if (removeList.includes(targetArray[i])) {
+				targetArray.splice(i, 1);
+			}
+		}
+	}
+	const el = document.getElementById("el");
+	let Arr = "bdðgjprsśtþvwyzź".split("");
+	removeStrings(Arr, [
+		"b",
+		"d",
+		"ð",
+		"g",
+		"j",
+		//"p",
+		//"r",
+		//"s",
+		//"ś",
+		//"t",
+		//"þ",
+		"v",
+		//"w",
+		//"y",
+		"z",
+		"ź"
+	]);
+	const Str = Arr.join("|")
+	el.innerHTML = Str;
+</script>
+
+</html>
