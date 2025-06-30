@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="m_u.liga" format="2">
+  <advance width="870"/>
+  <outline>
+    <contour>
+      <point x="80" y="0" type="line"/>
+      <point x="430" y="600" type="line"/>
+      <point x="780" y="0" type="line"/>
+      <point x="680" y="0" type="line"/>
+      <point x="430" y="450" type="line"/>
+      <point x="180" y="0" type="line"/>
+    </contour>
+    <contour>
+      <point x="80" y="0" type="line"/>
+      <point x="80" y="700" type="line"/>
+    </contour>
+    <contour>
+      <point x="80" y="1000" type="line"/>
+      <point x="80" y="850" type="line"/>
+      <point x="430" y="700" type="line"/>
+      <point x="780" y="850" type="line"/>
+      <point x="780" y="1000" type="line"/>
+      <point x="430" y="850" type="line"/>
+    </contour>
+    <contour>
+      <point x="80" y="0" type="line"/>
+      <point x="80" y="700" type="line"/>
+    </contour>
+  </outline>
+</glyph>
