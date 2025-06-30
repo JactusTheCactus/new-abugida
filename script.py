@@ -3,21 +3,8 @@ import subprocess
 import json
 from fontTools.pens.transformPen import TransformPen
 import os
-"""
-V: 800 - 1000
-C: 0 - 600
-"""
-uni = {
-	"ð": "eth",
-	"ŋ": "eng",
-	"ś": "sacute",
-	"ź": "zacute",
-	"þ": "thorn",
-	"é": "eacute",
-	"í": "iacute",
-	"ó": "oacute",
-	"ú": "uacute"
-}
+with open("uni.json","r",encoding="utf-8") as f:
+	uni = json.load(f)
 def getUni(char):
 	if char in uni:
 		out = uni.get(char)
@@ -53,10 +40,14 @@ with open("char.json", "r",encoding="utf-8") as f:
 	char = json.load(f)
 consonants, vowels = char["consonants"], char["vowels"]
 for g in glyphList:
+	glyphList[g].append([
+		[0,0],
+		[0,700]
+	])
 	glyph = font.newGlyph(g)
 	if g != ".notdef":
-		glyph.unicode = ord(g)
-		glyph.name = getUni(g)
+		glyph.unicode = ord(getUni(g))
+		glyph.name = g
 	pen = glyph.getPen()
 	for contour in glyphList[g]:
 		for i, pt in enumerate(contour):
@@ -81,20 +72,18 @@ if not os.path.exists(ufoName):
 	os.mkdir(ufoName)
 for c in consonants:
 	if c in font:
-		cU = getUni(c)
 		for v in vowels:
 			if v in font:
 				if v:
-					vU = getUni(v)
-					lig_name = "_".join([cU,vU]) + ".liga"
+					lig_name = "_".join([c,v]) + ".liga"
 					if lig_name in font:
 						continue
 					lig = font.newGlyph(lig_name)
 					lig.clear()
-					c_glyph = font[cU]
+					c_glyph = font[c]
 					pen = lig.getPen()
 					c_glyph.draw(pen)
-					v_glyph = font[vU]
+					v_glyph = font[v]
 					pen = lig.getPen()
 					tpen = TransformPen(pen, (1, 0, 0, 1, 0, 0))
 					v_glyph.draw(tpen)
@@ -104,14 +93,13 @@ fea = f"{ufoName}/features.fea"
 with open(fea, "w", encoding="utf-8") as f:
 	f.write("feature liga {\n")
 	for c in consonants:
-		cU = getUni(c)
+		c
 		for v in vowels:
 			if v:
-				vU = getUni(v)
-				lig_name = f"{cU}_{vU}"
-				f.write(f"    sub {cU} {vU} by {lig_name}.liga;\n")
+				v
+				lig_name = f"{c}_{v}"
+				f.write(f"    sub {c} {v} by {lig_name}.liga;\n")
 	f.write("} liga;\n")
-#save()
 with open(fea) as f:
     feaText = f.read()
 #print(feaText)
@@ -134,7 +122,7 @@ if 1:
 			],
 			capture_output = True,
 			universal_newlines = True,
-			#check = True
+			check = True
 		).stderr,
 		line
 	]))
