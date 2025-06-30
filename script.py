@@ -1,3 +1,8 @@
+from defcon import Font
+import subprocess
+import json
+from fontTools.pens.transformPen import TransformPen
+import os
 """
 V: 800 - 1000
 C: 0 - 600
@@ -19,10 +24,6 @@ def getUni(char):
 	else:
 		out = char
 	return out
-from defcon import Font
-import subprocess
-import json
-from fontTools.pens.transformPen import TransformPen
 def setWidth(g,l=80,r=90):
 	bounds = g.bounds
 	if bounds:
@@ -74,6 +75,10 @@ font.info.capHeight = 1000
 font.info.xHeight = 500
 font.info.baseline = 0
 ufoName = f"{font.info.postscriptFontName}.ufo"
+def save():
+	font.save(ufoName)
+if not os.path.exists(ufoName):
+	os.mkdir(ufoName)
 for c in consonants:
 	if c in font:
 		cU = getUni(c)
@@ -106,12 +111,13 @@ with open(fea, "w", encoding="utf-8") as f:
 				lig_name = f"{cU}_{vU}"
 				f.write(f"    sub {cU} {vU} by {lig_name}.liga;\n")
 	f.write("} liga;\n")
-font = Font(ufoName)
+#save()
 with open(fea) as f:
     feaText = f.read()
 #print(feaText)
 font.features.text = feaText  # Make sure it's set
-font.save(ufoName)
+save()
+font = Font(ufoName)
 if 1:
 	line = "=" * 50
 	print("\n".join([
