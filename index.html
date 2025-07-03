@@ -23,18 +23,14 @@
 			}
 		}
 		const el = document.getElementById("el");
-		let Arr = "bdðgjrvzź".split("");
-		removeStrings(Arr, [
-			//"b",
-			//"d",
-			//"ð",
-			//"g",
-			//"j",
-			//"r",
-			//"v",
-			//"z",
-			//"ź",
-		]);
+		let Arr = [//"b","d","ð",
+			"g",
+			"j",
+			"r",
+			"v",
+			"z",
+			"ź",
+		];
 		const Str = Arr.join("|");
 		el.innerHTML = Str;
 	</script>
