@@ -1,9 +1,30 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="z_i.liga" format="2">
-  <advance width="570"/>
+  <advance width="870"/>
   <outline>
     <contour>
-      <point x="80" y="0" type="move"/>
+      <point x="780" y="600" type="line"/>
+      <point x="630" y="600" type="line"/>
+      <point x="80" y="350" type="line"/>
+      <point x="80" y="250" type="line"/>
+      <point x="630" y="250" type="line"/>
+      <point x="80" y="0" type="line"/>
+      <point x="230" y="0" type="line"/>
+      <point x="780" y="250" type="line"/>
+      <point x="780" y="350" type="line"/>
+      <point x="230" y="350" type="line"/>
+    </contour>
+    <contour>
+      <point x="395" y="425" type="line"/>
+      <point x="615" y="525" type="line"/>
+      <point x="780" y="525" type="line"/>
+      <point x="780" y="425" type="line"/>
+    </contour>
+    <contour>
+      <point x="80" y="425" type="line"/>
+      <point x="80" y="525" type="line"/>
+      <point x="465" y="525" type="line"/>
+      <point x="245" y="425" type="line"/>
     </contour>
     <contour>
       <point x="80" y="0" type="line"/>

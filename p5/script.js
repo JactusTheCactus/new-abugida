@@ -1,72 +1,84 @@
-/*
-	https://editor.p5js.org
-*/
-function setup() {
-  const maxX = 700;
-  const maxY = 600;
-  createCanvas(maxX, maxY);
-  background(240);
-  strokeWeight(2);
-  function v (points) {
-    let pointV = [];
-    points.forEach(p =>
-      pointV.push(
-        createVector(
-          p[0],
-          maxY - p[1]
-        )
-      )
-    );
-    fill(100, 200, 255, 150);
-    stroke(0);
-    beginShape();
-    for (let pt of pointV) {
-      vertex(pt.x, pt.y);
-    }
-    endShape(CLOSE);
-    noStroke();
-    fill(255, 0, 0);
-    for (let pt of pointV) {
-      circle(pt.x, pt.y, 8);
-    }
-    stroke(0);
-    for (let i = 0; i < pointV.length; i++) {
-      let next = (i + 1) % pointV.length;
-      line(pointV[i].x, pointV[i].y, pointV[next].x, pointV[next].y);
-    }
-  }
-  [
-    [
-      [700,600],
-      [550,600],
-      [0,350],
-      [0,250],
-      [550,250],
-      [0,0],
-      [150,0],
-      [700,250],
-      [700,350],
-      [150,350]
-    ],
-    [
-      [150,0],
-      [700,0],
-      [700,250],
-      [600,205],
-      [600,100],
-      [370,100]
-    ],
-    [
-      [315,425],
-      [535,525],
-      [700,525],
-      [700,425]
-    ],
-    [
-      [0,425],
-      [0,525],
-      [385,525],
-      [165,425]
-    ]
-  ].forEach(vert => v(vert));
+import { createCanvas } from 'canvas';
+import fs from 'fs';
+import path from 'path';
+
+function filePath(...args) {
+	const root = path.join(".", "p5")
+	return path.join(root, ...args);
 }
+
+const maxX = 700;
+const maxY = 600;
+const canvas = createCanvas(maxX, maxY);
+const ctx = canvas.getContext('2d');
+
+ctx.clearRect(0, 0, maxX, maxY);
+
+ctx.lineWidth = 2;
+
+function drawShape(points) {
+	const pointV = points.map(p => ({
+		x: p[0],
+		y: maxY - p[1],
+	}));
+
+	// Fill polygon
+	ctx.fillStyle = 'rgba(100, 200, 255, 0.6)';
+	ctx.strokeStyle = 'black';
+
+	ctx.beginPath();
+	ctx.moveTo(pointV[0].x, pointV[0].y);
+	for (let pt of pointV.slice(1)) {
+		ctx.lineTo(pt.x, pt.y);
+	}
+	ctx.closePath();
+	ctx.fill();
+	ctx.stroke();
+
+	// Red circles
+	ctx.fillStyle = 'red';
+	for (let pt of pointV) {
+		ctx.beginPath();
+		ctx.arc(pt.x, pt.y, 4, 0, 2 * Math.PI);
+		ctx.fill();
+	}
+
+	// Black lines
+	ctx.strokeStyle = 'black';
+	for (let i = 0; i < pointV.length; i++) {
+		let next = (i + 1) % pointV.length;
+		ctx.beginPath();
+		ctx.moveTo(pointV[i].x, pointV[i].y);
+		ctx.lineTo(pointV[next].x, pointV[next].y);
+		ctx.stroke();
+	}
+}
+
+const shapes = [
+	[
+		[0,600],
+		[700,600],
+		[700,500],
+		[150,500],
+		[550,400],
+		[700,250],
+		[550,100],
+		[100,0],
+		[0,0],
+		[0,100],
+		[550,200],
+		[600,250],
+		[550,300],
+		[0,450]
+	]
+];
+
+shapes.forEach(drawShape);
+
+// Save to file
+const out = fs.createWriteStream(filePath("output.png"));
+const stream = canvas.createPNGStream();
+stream.pipe(out);
+out.on('finish', () => {
+	console.log('✅ Saved output.png');
+});
