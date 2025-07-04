@@ -1,7 +1,6 @@
-import { createCanvas } from 'canvas';
-import fs from 'fs';
-import path from 'path';
-
+import {createCanvas} from "canvas";
+import fs from "fs";
+import path from "path";
 function filePath(...args) {
 	const root = path.join(".", "p5")
 	return path.join(root, ...args);
