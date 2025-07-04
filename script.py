@@ -130,8 +130,10 @@ with open(fea, "w", encoding="utf-8") as f:
 							v_glyph.draw(tpen)
 							lig.unicode = None
 							setWidth(lig)
-		f.write("} liga;\n")
 		ligList.append(f"\t{getUni(c).upper() + getUni(c)}")
+	for i in symbolLigs:
+		f.write(f"    sub {i} by {symbolLigs[i]};\n")
+	f.write("} liga;\n")
 if ligList:
 	print("Successfully created ligatures for:\n")
 	for i in ligList:
