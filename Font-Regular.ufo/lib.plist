@@ -39,6 +39,12 @@
       <string>y</string>
       <string>z</string>
       <string>zacute</string>
+      <string>space</string>
+      <string>fullStop</string>
+      <string>comma</string>
+      <string>question</string>
+      <string>ellipsis</string>
+      <string>hyphen</string>
       <string>b_a.liga</string>
       <string>b_e.liga</string>
       <string>b_eacute.liga</string>

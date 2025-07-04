@@ -46,6 +46,8 @@
     <string>c_u.liga.glif</string>
     <key>c_uacute.liga</key>
     <string>c_uacute.liga.glif</string>
+    <key>comma</key>
+    <string>comma.glif</string>
     <key>d</key>
     <string>d.glif</string>
     <key>d_a.liga</key>
@@ -70,6 +72,8 @@
     <string>e.glif</string>
     <key>eacute</key>
     <string>eacute.glif</string>
+    <key>ellipsis</key>
+    <string>ellipsis.glif</string>
     <key>eng</key>
     <string>eng.glif</string>
     <key>eng_a.liga</key>
@@ -130,6 +134,8 @@
     <string>f_u.liga.glif</string>
     <key>f_uacute.liga</key>
     <string>f_uacute.liga.glif</string>
+    <key>fullStop</key>
+    <string>fullS_top.glif</string>
     <key>g</key>
     <string>g.glif</string>
     <key>g_a.liga</key>
@@ -170,6 +176,8 @@
     <string>h_u.liga.glif</string>
     <key>h_uacute.liga</key>
     <string>h_uacute.liga.glif</string>
+    <key>hyphen</key>
+    <string>hyphen.glif</string>
     <key>i</key>
     <string>i.glif</string>
     <key>iacute</key>
@@ -298,6 +306,8 @@
     <string>p_u.liga.glif</string>
     <key>p_uacute.liga</key>
     <string>p_uacute.liga.glif</string>
+    <key>question</key>
+    <string>question.glif</string>
     <key>r</key>
     <string>r.glif</string>
     <key>r_a.liga</key>
@@ -358,6 +368,8 @@
     <string>sacute_u.liga.glif</string>
     <key>sacute_uacute.liga</key>
     <string>sacute_uacute.liga.glif</string>
+    <key>space</key>
+    <string>space.glif</string>
     <key>t</key>
     <string>t.glif</string>
     <key>t_a.liga</key>

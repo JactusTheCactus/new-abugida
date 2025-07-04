@@ -8,6 +8,7 @@ feature liga {
     sub b oacute by b_oacute.liga;
     sub b u by b_u.liga;
     sub b uacute by b_uacute.liga;
+} liga;
     sub c a by c_a.liga;
     sub c e by c_e.liga;
     sub c eacute by c_eacute.liga;
@@ -17,6 +18,7 @@ feature liga {
     sub c oacute by c_oacute.liga;
     sub c u by c_u.liga;
     sub c uacute by c_uacute.liga;
+} liga;
     sub d a by d_a.liga;
     sub d e by d_e.liga;
     sub d eacute by d_eacute.liga;
@@ -26,6 +28,7 @@ feature liga {
     sub d oacute by d_oacute.liga;
     sub d u by d_u.liga;
     sub d uacute by d_uacute.liga;
+} liga;
     sub eth a by eth_a.liga;
     sub eth e by eth_e.liga;
     sub eth eacute by eth_eacute.liga;
@@ -35,6 +38,7 @@ feature liga {
     sub eth oacute by eth_oacute.liga;
     sub eth u by eth_u.liga;
     sub eth uacute by eth_uacute.liga;
+} liga;
     sub f a by f_a.liga;
     sub f e by f_e.liga;
     sub f eacute by f_eacute.liga;
@@ -44,6 +48,7 @@ feature liga {
     sub f oacute by f_oacute.liga;
     sub f u by f_u.liga;
     sub f uacute by f_uacute.liga;
+} liga;
     sub g a by g_a.liga;
     sub g e by g_e.liga;
     sub g eacute by g_eacute.liga;
@@ -53,6 +58,7 @@ feature liga {
     sub g oacute by g_oacute.liga;
     sub g u by g_u.liga;
     sub g uacute by g_uacute.liga;
+} liga;
     sub h a by h_a.liga;
     sub h e by h_e.liga;
     sub h eacute by h_eacute.liga;
@@ -62,6 +68,7 @@ feature liga {
     sub h oacute by h_oacute.liga;
     sub h u by h_u.liga;
     sub h uacute by h_uacute.liga;
+} liga;
     sub j a by j_a.liga;
     sub j e by j_e.liga;
     sub j eacute by j_eacute.liga;
@@ -71,6 +78,7 @@ feature liga {
     sub j oacute by j_oacute.liga;
     sub j u by j_u.liga;
     sub j uacute by j_uacute.liga;
+} liga;
     sub k a by k_a.liga;
     sub k e by k_e.liga;
     sub k eacute by k_eacute.liga;
@@ -80,6 +88,7 @@ feature liga {
     sub k oacute by k_oacute.liga;
     sub k u by k_u.liga;
     sub k uacute by k_uacute.liga;
+} liga;
     sub l a by l_a.liga;
     sub l e by l_e.liga;
     sub l eacute by l_eacute.liga;
@@ -89,6 +98,7 @@ feature liga {
     sub l oacute by l_oacute.liga;
     sub l u by l_u.liga;
     sub l uacute by l_uacute.liga;
+} liga;
     sub m a by m_a.liga;
     sub m e by m_e.liga;
     sub m eacute by m_eacute.liga;
@@ -98,6 +108,7 @@ feature liga {
     sub m oacute by m_oacute.liga;
     sub m u by m_u.liga;
     sub m uacute by m_uacute.liga;
+} liga;
     sub n a by n_a.liga;
     sub n e by n_e.liga;
     sub n eacute by n_eacute.liga;
@@ -107,6 +118,7 @@ feature liga {
     sub n oacute by n_oacute.liga;
     sub n u by n_u.liga;
     sub n uacute by n_uacute.liga;
+} liga;
     sub eng a by eng_a.liga;
     sub eng e by eng_e.liga;
     sub eng eacute by eng_eacute.liga;
@@ -116,6 +128,7 @@ feature liga {
     sub eng oacute by eng_oacute.liga;
     sub eng u by eng_u.liga;
     sub eng uacute by eng_uacute.liga;
+} liga;
     sub p a by p_a.liga;
     sub p e by p_e.liga;
     sub p eacute by p_eacute.liga;
@@ -125,6 +138,7 @@ feature liga {
     sub p oacute by p_oacute.liga;
     sub p u by p_u.liga;
     sub p uacute by p_uacute.liga;
+} liga;
     sub r a by r_a.liga;
     sub r e by r_e.liga;
     sub r eacute by r_eacute.liga;
@@ -134,6 +148,7 @@ feature liga {
     sub r oacute by r_oacute.liga;
     sub r u by r_u.liga;
     sub r uacute by r_uacute.liga;
+} liga;
     sub s a by s_a.liga;
     sub s e by s_e.liga;
     sub s eacute by s_eacute.liga;
@@ -143,6 +158,7 @@ feature liga {
     sub s oacute by s_oacute.liga;
     sub s u by s_u.liga;
     sub s uacute by s_uacute.liga;
+} liga;
     sub sacute a by sacute_a.liga;
     sub sacute e by sacute_e.liga;
     sub sacute eacute by sacute_eacute.liga;
@@ -152,6 +168,7 @@ feature liga {
     sub sacute oacute by sacute_oacute.liga;
     sub sacute u by sacute_u.liga;
     sub sacute uacute by sacute_uacute.liga;
+} liga;
     sub t a by t_a.liga;
     sub t e by t_e.liga;
     sub t eacute by t_eacute.liga;
@@ -161,6 +178,7 @@ feature liga {
     sub t oacute by t_oacute.liga;
     sub t u by t_u.liga;
     sub t uacute by t_uacute.liga;
+} liga;
     sub v a by v_a.liga;
     sub v e by v_e.liga;
     sub v eacute by v_eacute.liga;
@@ -170,6 +188,7 @@ feature liga {
     sub v oacute by v_oacute.liga;
     sub v u by v_u.liga;
     sub v uacute by v_uacute.liga;
+} liga;
     sub w a by w_a.liga;
     sub w e by w_e.liga;
     sub w eacute by w_eacute.liga;
@@ -179,6 +198,7 @@ feature liga {
     sub w oacute by w_oacute.liga;
     sub w u by w_u.liga;
     sub w uacute by w_uacute.liga;
+} liga;
     sub x a by x_a.liga;
     sub x e by x_e.liga;
     sub x eacute by x_eacute.liga;
@@ -188,6 +208,7 @@ feature liga {
     sub x oacute by x_oacute.liga;
     sub x u by x_u.liga;
     sub x uacute by x_uacute.liga;
+} liga;
     sub y a by y_a.liga;
     sub y e by y_e.liga;
     sub y eacute by y_eacute.liga;
@@ -197,6 +218,7 @@ feature liga {
     sub y oacute by y_oacute.liga;
     sub y u by y_u.liga;
     sub y uacute by y_uacute.liga;
+} liga;
     sub z a by z_a.liga;
     sub z e by z_e.liga;
     sub z eacute by z_eacute.liga;
@@ -206,6 +228,7 @@ feature liga {
     sub z oacute by z_oacute.liga;
     sub z u by z_u.liga;
     sub z uacute by z_uacute.liga;
+} liga;
     sub zacute a by zacute_a.liga;
     sub zacute e by zacute_e.liga;
     sub zacute eacute by zacute_eacute.liga;
@@ -215,6 +238,7 @@ feature liga {
     sub zacute oacute by zacute_oacute.liga;
     sub zacute u by zacute_u.liga;
     sub zacute uacute by zacute_uacute.liga;
+} liga;
     sub thorn a by thorn_a.liga;
     sub thorn e by thorn_e.liga;
     sub thorn eacute by thorn_eacute.liga;

@@ -21,7 +21,6 @@ def setWidth(g,l=80,r=90):
 Sets the width of a font glyph.
 	"""
 	bounds = g.bounds
-	#print(type(g))
 	if bounds:
 		xMin, yMin, xMax, yMax = bounds
 		g.leftMargin = l
@@ -66,19 +65,20 @@ the output and errors of the console command
 line = "=" * 50
 print(f"\n{line}\n")
 with open("data.json", "r", encoding="utf-8") as f:
-	data = json.load(f)
-glyphList = toTuple(data)
+	glyphList = toTuple(json.load(f))
+with open("lig.json", "r", encoding="utf-8") as f:
+	symbolLigs = json.load(f)
 font = Font()
 with open("char.json", "r",encoding="utf-8") as f:
 	char = json.load(f)
-consonants, vowels = char["consonants"], char["vowels"]
+consonants, vowels, symbols = char["consonants"], char["vowels"], char["grammar"]
 for g in glyphList:
 	glyphList[g].append([
 		[0,0],
 		[0,700]
 	])
 	glyph = font.newGlyph(g)
-	if g != ".notdef":
+	if g not in [".notdef","ellipsis"]:
 		glyph.unicode = ord(getUni(g))
 		glyph.name = g
 	pen = glyph.getPen()
@@ -106,38 +106,39 @@ Saves the font at the location defined in `ufoName`
 	font.save(ufoName)
 if not os.path.exists(ufoName):
 	os.mkdir(ufoName)
-print("Successfully created ligatures for:\n")
-for c in consonants:
-	for v in vowels:
-		if c in font:
-			if v in font:
-				if v:
-					lig_name = "_".join([c,v]) + ".liga"
-					if lig_name not in font:
-						lig = font.newGlyph(lig_name)
-						lig.clear()
-						c_glyph = font[c]
-						pen = lig.getPen()
-						c_glyph.draw(pen)
-						v_glyph = font[v]
-						pen = lig.getPen()
-						tpen = TransformPen(pen, (1, 0, 0, 1, 0, 0))
-						v_glyph.draw(tpen)
-						lig.unicode = None
-						setWidth(lig)
-	print(f"\t{getUni(c).upper() + getUni(c)}")
+ligList = []
 fea = f"{ufoName}/features.fea"
 with open(fea, "w", encoding="utf-8") as f:
 	f.write("feature liga {\n")
 	for c in consonants:
 		for v in vowels:
-			if v:
-				lig_name = f"{c}_{v}"
-				f.write(f"    sub {c} {v} by {lig_name}.liga;\n")
-	f.write("} liga;\n")
+			if c in font:
+				if v in font:
+					if v:
+						lig_name = "_".join([c,v])
+						f.write(f"    sub {c} {v} by {lig_name}.liga;\n")
+						lig_name = lig_name + ".liga"
+						if lig_name not in font:
+							lig = font.newGlyph(lig_name)
+							lig.clear()
+							c_glyph = font[c]
+							pen = lig.getPen()
+							c_glyph.draw(pen)
+							v_glyph = font[v]
+							pen = lig.getPen()
+							tpen = TransformPen(pen, (1, 0, 0, 1, 0, 0))
+							v_glyph.draw(tpen)
+							lig.unicode = None
+							setWidth(lig)
+		f.write("} liga;\n")
+		ligList.append(f"\t{getUni(c).upper() + getUni(c)}")
+if ligList:
+	print("Successfully created ligatures for:\n")
+	for i in ligList:
+		print(i)
 with open(fea) as f:
     feaText = f.read()
-font.features.text = feaText  # Make sure it's set
+font.features.text = feaText
 save()
 font = Font(ufoName)
 output = cmdRun(f"fontmake -u {ufoName} -o otf")

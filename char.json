@@ -36,5 +36,13 @@
 		"oacute",
 		"u",
 		"uacute"
+	],
+	"grammar": [
+		"space",
+		"fullStop",
+		"comma",
+		"question",
+		"ellipsis",
+		"hyphen"
 	]
 }
