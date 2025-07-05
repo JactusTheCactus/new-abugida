@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<style>
+	@font-face {
+		font-family: "Font";
+		src: url("master_otf/Font-Regular.otf") format("opentype");
+	}
+
+	body {
+		font: 20px Verdana;
+		background-color: #fff;
+		margin-left: 1em;
+	}
+
+	.abugida {
+		font: 1em Font;
+		font-weight: bold;
+	}
+</style>
+
+<body>
+	<pre class="abugida">
+frenz, róminz, kuncrímen, lend mí yór xírz.
+xaxí kum tú berí sízur, not tú préz him.
+ðu ívul ðat men dú livz xaftur ðem.
+ðu gud xiz xoft xintured wiþ ðér bónz -
+só let xit bí wiþ sízur. ðu nóbul brútis
+haþ tóld yú sízur wuz xambiśis.
+xif xit wur só, xit wuz xu grívis folt,
+xand grívislí haþ sízur xansurd xit.
+hír, xundur lív xuv brútis xand ðu rest -
+fór brútis xiz xen xonurubul man.
+só xar ðé xol, xol xonurubul men -
+kum xaxí tú spík xin sízurs fyúnurul.
+hí wuz maxí frend, féþful xand just tú mí.
+but brútis sez hí wuz xambiśis,
+xand brútis xiz xen xonurubul man.
+hí haþ brot mení kaptivz hóm tú róm,
+húz ransumz did ðu jenurul kofurz fil.
+did ðis xin sízur sím xambiśis?
+wen ðat ðu pór hav kraxíd, sízur haþ wept.
+xambiśun śud bí méd xuv sturnur stuf.
+yet brútis sez hí wuz xambiśis,
+xand brútis xiz xen xonurubul man.
+yú xol did sí ðat xon ðu lupurkul
+xaxí þraxís prízentid him xu kiŋlí kraxún,
+wic hí did þraxís rufyúz. wuz ðis xambiśun?
+yet brútis sez hí wuz xambiśis,
+xand śur hí xiz xen xonurubul man.
+xaxí spík not tú disprúv wut brútis spók,
+but hír xaxí xam tú spík wut xaxí dú nó.
+yú xol did luv him wuns, not wiþaxút coz.
+wut coz wiþhóldz yú ðen tú mórn fór him?
+ó jujment, ðaxú xart fled tú brútiś bísts,
+xand men hav lost ðér rízun. bér wiþ mí.
+maxí hart xiz xin ðu kofin ðér wiþ sízur,
+xand xaxí must poz til xit kum bak tú mí.
+	</pre>
+</body>
+<script>
+	const char = {
+		punctuation: " |.|,|?|...|-",
+		vowels: "a|e|é|i|í|ó|ó|u|ú",
+		consonants: "b|c|d|ð|f|g|h|j|k|l|m|n|ŋ|p|r|s|ś|t|þ|v|w|x|y|z|ź",
+	};
+	console.log(char.punctuation.split("|"));
+	console.log(
+		char.vowels.split("|").map((x) => x.toUpperCase() + x.toLowerCase())
+	);
+	console.log(
+		char.consonants
+			.split("|")
+			.map((x) => x.toUpperCase() + x.toLowerCase())
+	);
+</script>
+
+</html>
