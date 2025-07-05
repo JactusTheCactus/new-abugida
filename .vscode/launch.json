@@ -2,6 +2,15 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
+			"name": "Print Pages",
+			"program": "print.js",
+			"request": "launch",
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"type": "node"
+		},
+		{
 			"name": "P5 Vector",
 			"program": "p5/script.js",
 			"request": "launch",
