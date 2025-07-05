@@ -114,35 +114,36 @@ with open(fea, "w", encoding="utf-8") as f:
 	f.write("feature liga {\n")
 	for c in consonants:
 		for v in vowels:
-			if c in font:
-				if v in font:
-					if v:
-						lig_name = ligName([c,v])
-						f.write(f"    sub {c} {v} by {lig_name}.liga;\n")
-						lig_name = lig_name + ".liga"
-						if lig_name not in font:
-							lig = font.newGlyph(lig_name)
-							lig.clear()
-							c_glyph = font[c]
-							pen = lig.getPen()
-							c_glyph.draw(pen)
-							v_glyph = font[v]
-							pen = lig.getPen()
-							tpen = TransformPen(pen, (1, 0, 0, 1, 0, 0))
-							v_glyph.draw(tpen)
-							lig.unicode = None
-							setWidth(lig)
-		ligList.append(f"\t{getUni(c).upper() + getUni(c)}")
+			lig_name = ligName([c,v])
+			f.write(f"    sub {c} {v} by {lig_name}.liga;\n")
+			lig_name = lig_name + ".liga"
+			if lig_name not in font:
+				lig = font.newGlyph(lig_name)
+				lig.clear()
+				c_glyph = font[c]
+				pen = lig.getPen()
+				c_glyph.draw(pen)
+				v_glyph = font[v]
+				pen = lig.getPen()
+				tpen = TransformPen(pen, (1, 0, 0, 1, 0, 0))
+				v_glyph.draw(tpen)
+				lig.unicode = None
+				setWidth(lig)
 	for i in symbolLigs:
 		f.write(f"    sub {i} by {symbolLigs[i]};\n")
 	f.write("} liga;\n")
-if ligList:
-	print("Successfully created ligatures for:\n")
-	for i in ligList:
-		print(i)
 with open(fea) as f:
     feaText = f.read()
 font.features.text = feaText
+for v in vowels:
+    x_v_name = ligName(["x", v]) + ".liga"
+    if x_v_name in font and v in font:
+        v_glyph = font[v]
+        x_v_glyph = font[x_v_name]
+        v_glyph.clear()
+        pen = v_glyph.getPen()
+        x_v_glyph.draw(pen)
+        setWidth(v_glyph)
 save()
 font = Font(ufoName)
 output = cmdRun(f"fontmake -u {ufoName} -o otf")

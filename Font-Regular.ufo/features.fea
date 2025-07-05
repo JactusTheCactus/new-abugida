@@ -228,4 +228,6 @@ feature liga {
     sub comma space by comma;
     sub question space by question;
     sub fullStop fullStop fullStop by ellipsis;
+    sub space hyphen by hyphen;
+    sub hyphen space by hyphen;
 } liga;
