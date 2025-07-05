@@ -5,6 +5,8 @@ from fontTools.pens.transformPen import TransformPen
 import os
 with open("uni.json","r",encoding="utf-8") as f:
 	uni = json.load(f)
+def ligName(ligs:list):
+	return "_".join(ligs)
 def getUni(char):
 	"""
 Gets the unicode variant of `char`, following the format of;
@@ -115,7 +117,7 @@ with open(fea, "w", encoding="utf-8") as f:
 			if c in font:
 				if v in font:
 					if v:
-						lig_name = "_".join([c,v])
+						lig_name = ligName([c,v])
 						f.write(f"    sub {c} {v} by {lig_name}.liga;\n")
 						lig_name = lig_name + ".liga"
 						if lig_name not in font:
