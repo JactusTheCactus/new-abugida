@@ -2,14 +2,7 @@
 <html>
 
 <head>
-	<title>Dynamic Iframes</title>
-	<style>
-		iframe {
-			width: 100%;
-			border: none;
-			margin-bottom: 20px;
-		}
-	</style>
+	<link href="style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -22,7 +15,7 @@
 
 		function resizeIframe(iframe) {
 			try {
-				iframe.style.height = iframe.contentWindow.document.body.scrollHeight*1.1 + 'px';
+				iframe.style.height = iframe.contentWindow.document.body.scrollHeight * 1.1 + 'px';
 			} catch (e) {
 				console.warn('Unable to access iframe content for resizing (likely cross-origin).');
 			}

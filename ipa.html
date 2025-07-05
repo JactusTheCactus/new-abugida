@@ -1,85 +1,12 @@
 <!DOCTYPE html>
 <html>
-<style>
-	@font-face {
-		font-family:
-			Abugida;
-		src:
-			url("master_otf/Font-Regular.otf") format("opentype");
-	}
 
-	body {
-		font-size:
-			30px;
-		font-family:
-			Verdana;
-		background-color:
-			#fff;
-		margin-left:
-			1em;
-		font-weight:
-			bold;
-	}
-
-	tr:nth-child(even) {
-		font-family:
-			Abugida;
-		white-space:
-			pre;
-	}
-
-	tr:nth-child(odd) {
-		font-family:
-			Arial;
-	}
-
-	tr:nth-child(odd):not(.punc) td::before {
-		content:
-			"/";
-	}
-
-	tr:nth-child(odd):not(.punc) td::after {
-		content:
-			"/";
-	}
-
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		text-align:
-			center;
-	}
-
-	table,
-	th,
-	td {
-		border:
-			1px solid #ccc;
-		border-collapse:
-			collapse;
-		padding:
-			10px;
-		vertical-align:
-			top;
-		text-align:
-			center;
-	}
-
-	table {
-		width: 100%
-	}
-
-	th {
-		text-align:
-			center;
-	}
-</style>
+<head>
+	<link href="style.css" rel="stylesheet">
+</head>
 
 <body>
-	<table>
+	<table class="table">
 		<tr>
 			<th colspan="100%">Consonants</th>
 		</tr>
@@ -144,7 +71,7 @@
 			<td>θ</td>
 		</tr>
 	</table>
-	<table>
+	<table class="table">
 		<tr>
 			<th colspan="100%">Vowels</th>
 		</tr>
@@ -171,7 +98,7 @@
 			<td>u</td>
 		</tr>
 	</table>
-	<table>
+	<table class="table">
 		<tr>
 			<th colspan="100%">Punctuation</th>
 		</tr>
