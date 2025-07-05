@@ -56,8 +56,8 @@ iframe {
 	font-family: Arial;
 }
 
-.table tr:nth-child(odd):not(.punc) td::before,
-.table tr:nth-child(odd):not(.punc) td::after {
+.ipa::before,
+.ipa::after {
 	content: "/";
 }
 
