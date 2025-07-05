@@ -2,5 +2,7 @@
 	"fullStop space": "fullStop",
 	"comma space": "comma",
 	"question space": "question",
-	"fullStop fullStop fullStop": "ellipsis"
+	"fullStop fullStop fullStop": "ellipsis",
+	"space hyphen": "hyphen",
+	"hyphen space": "hyphen"
 }
