@@ -1,38 +1,42 @@
 <!DOCTYPE html>
 <html>
+
+<head>
+	<title>Dynamic Iframes</title>
 	<style>
-		@font-face {
-			font-family: "Font";
-			src: url("master_otf/Font-Regular.otf") format("opentype");
-		}
-
-		body {
-			font: 50px Verdana;
-			background-color: #fff;
-		}
-
-		.abugida {
-			font: 1em Font;
-			font-weight:bold;
+		iframe {
+			width: 100%;
+			border: none;
+			margin-bottom: 20px;
 		}
 	</style>
+</head>
 
-	<body>
-		<p class="abugida">
-			heló, wurld...
-		</p>
-	</body>
+<body>
+
 	<script>
-		const char = {
-			punctuation: " |.|,|?|...|-",
-			vowels: "a|e|é|i|í|o|ó|u|ú",
-			consonants:
-				"b|c|d|ð|f|g|h|j|k|l|m|n|ŋ|p|r|s|ś|t|þ|v|w|x|y|z|ź",
-		};
-		console.log(char.punctuation.split("|"));
-		console.log(char.vowels.split("|").map((x) => x.toUpperCase() + x.toLowerCase()));
-		console.log(
-			char.consonants.split("|").map((x) => x.toUpperCase() + x.toLowerCase())
-		);
+		const urls = [
+			'ipa.html',
+			'example.html'
+		];
+
+		function resizeIframe(iframe) {
+			try {
+				iframe.style.height = iframe.contentWindow.document.body.scrollHeight*1.1 + 'px';
+			} catch (e) {
+				console.warn('Unable to access iframe content for resizing (likely cross-origin).');
+			}
+		}
+
+		urls.forEach((url, index) => {
+			const iframe = document.createElement('iframe');
+			iframe.src = url;
+			iframe.id = `iframe-${index}`;
+			iframe.onload = () => resizeIframe(iframe);
+			document.body.appendChild(iframe);
+		});
 	</script>
+
+</body>
+
 </html>

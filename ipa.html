@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<style>
+	@font-face {
+		font-family:
+			Abugida;
+		src:
+			url("master_otf/Font-Regular.otf") format("opentype");
+	}
+
+	body {
+		font-size:
+			30px;
+		font-family:
+			Verdana;
+		background-color:
+			#fff;
+		margin-left:
+			1em;
+		font-weight:
+			bold;
+	}
+
+	tr:nth-child(even) {
+		font-family:
+			Abugida;
+		white-space:
+			pre;
+	}
+
+	tr:nth-child(odd) {
+		font-family:
+			Arial;
+	}
+
+	tr:nth-child(odd):not(.punc) td::before {
+		content:
+			"/";
+	}
+
+	tr:nth-child(odd):not(.punc) td::after {
+		content:
+			"/";
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		text-align:
+			center;
+	}
+
+	table,
+	th,
+	td {
+		border:
+			1px solid #ccc;
+		border-collapse:
+			collapse;
+		padding:
+			10px;
+		vertical-align:
+			top;
+		text-align:
+			center;
+	}
+
+	table {
+		width: 100%
+	}
+
+	th {
+		text-align:
+			center;
+	}
+</style>
+
+<body>
+	<table>
+		<tr>
+			<th colspan="100%">Consonants</th>
+		</tr>
+		<tr>
+			<td>b</td>
+			<td>c</td>
+			<td>d</td>
+			<td>ð</td>
+			<td>f</td>
+			<td>g</td>
+			<td>h</td>
+			<td>j</td>
+			<td>k</td>
+			<td>l</td>
+		</tr>
+		<tr>
+			<td>b</td>
+			<td>t͡ʃ</td>
+			<td>d</td>
+			<td>ð</td>
+			<td>f</td>
+			<td>g</td>
+			<td>h</td>
+			<td>d͡ʒ</td>
+			<td>k</td>
+			<td>l</td>
+		</tr>
+		<tr>
+			<td>v</td>
+			<td>w</td>
+			<td>y</td>
+			<td>z</td>
+			<td>ź</td>
+			<td>m</td>
+			<td>n</td>
+			<td>ŋ</td>
+			<td>p</td>
+			<td>r</td>
+		</tr>
+		<tr>
+			<td>v</td>
+			<td>w</td>
+			<td>j</td>
+			<td>z</td>
+			<td>ʒ</td>
+			<td>m</td>
+			<td>n</td>
+			<td>ŋ</td>
+			<td>p</td>
+			<td>ɹ</td>
+		</tr>
+		<tr>
+			<td>s</td>
+			<td>ś</td>
+			<td>t</td>
+			<td>þ</td>
+		</tr>
+		<tr>
+			<td>s</td>
+			<td>ʃ</td>
+			<td>t</td>
+			<td>θ</td>
+		</tr>
+	</table>
+	<table>
+		<tr>
+			<th colspan="100%">Vowels</th>
+		</tr>
+		<tr>
+			<td>a</td>
+			<td>e</td>
+			<td>é</td>
+			<td>i</td>
+			<td>í</td>
+			<td>o</td>
+			<td>ó</td>
+			<td>u</td>
+			<td>ú</td>
+		</tr>
+		<tr>
+			<td>ɐ~æ</td>
+			<td>ɛ</td>
+			<td>e</td>
+			<td>ɪ</td>
+			<td>i</td>
+			<td>ɑ~ɔ</td>
+			<td>o~ʊ</td>
+			<td>ʌ~ə</td>
+			<td>u</td>
+		</tr>
+	</table>
+	<table>
+		<tr>
+			<th colspan="100%">Punctuation</th>
+		</tr>
+		<tr>
+			<td> </td>
+			<td>.</td>
+			<td>,</td>
+			<td>?</td>
+			<td>...</td>
+			<td>-</td>
+		</tr>
+		<tr class="punc">
+			<td>[SPACE]</td>
+			<td>.</td>
+			<td>,</td>
+			<td>?</td>
+			<td>...</td>
+			<td>&mdash;</td>
+		</tr>
+	</table>
+</body>
+
+</html>
