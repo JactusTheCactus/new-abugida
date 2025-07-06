@@ -15,9 +15,9 @@ jobs:
         with:
           node-version: "lts/*"
           cache: "npm"
-#      - name: Install Node Dependencies
-#        run: |
-#          npm install
+      - name: Install Node Dependencies
+        run: |
+          npm install
 #      - name: Set up Python
 #        uses: actions/setup-python@v5
 #        with:
@@ -30,7 +30,6 @@ jobs:
 #          pip install -r requirements.txt
       - name: Run Script
         run: |
-          node -e
 #          node -e "import('puppeteer').then(p => p.launch().then(b => b.close()))"
           npm list puppeteer puppeteer-core || true
 #          node main.js
