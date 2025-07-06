@@ -10,6 +10,7 @@
 			],
 			"type": "node"
 		},
+		/*
 		{
 			"name": "PDF => PNG",
 			"program": "png.js",
@@ -19,6 +20,8 @@
 			],
 			"type": "node"
 		},
+		*/
+		/*
 		{
 			"name": "HTML => PDF",
 			"program": "pdf.js",
@@ -28,6 +31,7 @@
 			],
 			"type": "node"
 		},
+		*/
 		{
 			"name": "Vector",
 			"program": "p5/script.js",
@@ -37,6 +41,7 @@
 			],
 			"type": "node"
 		},
+		/*
 		{
 			"name": "Build",
 			"type": "debugpy",
@@ -44,5 +49,6 @@
 			"program": "script.py",
 			"console": "integratedTerminal"
 		}
+		*/
 	]
 }
