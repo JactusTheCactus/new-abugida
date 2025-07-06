@@ -16,7 +16,10 @@ jobs:
           node-version: "lts/*"
           cache: "npm"
       - name: Install Node Dependencies
-        run: npm install
+        run: |
+          npm install
+          npm uninstall puppeteer-core
+          npm install puppeteer
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -28,7 +31,8 @@ jobs:
           python -m  pipreqs.pipreqs --encoding utf-8  ./ --force
           pip install -r requirements.txt
       - name: Run Script
-        run: node main.js
+        run: |
+          node main.js
       - name: Configure Git
         run: |
           git config --global user.name "github-gremlin"
