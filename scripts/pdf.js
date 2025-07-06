@@ -12,8 +12,11 @@ import puppeteer from "puppeteer";
   }
 
   const browser = await puppeteer.launch({
-  args: ['--no-sandbox', '--disable-setuid-sandbox'],
-  // executablePath: '/usr/bin/chromium-browser' // if you installed chromium manually
+  args: [
+'--no-sandbox',
+'--disable-setuid-sandbox'
+],
+  executablePath: '/usr/bin/chromium-browser' // if you installed chromium manually
 });
   const pages = [
     "https://jactusthecactus.github.io/new-abugida/site/html/ipa.html",
