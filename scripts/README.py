@@ -11,9 +11,8 @@ def list_directories_and_contents(base_path):
                 print(f"   └─ {f}")
         else:
             print("   └─ (empty)")
-if __name__ == "__main__":
-    path = input("Enter the path to the directory you want to scan: ").strip()
-    if os.path.isdir(path):
+path = os.path.join("site","png")
+if os.path.isdir(path):
         list_directories_and_contents(path)
-    else:
+else:
         print("⚠️ Invalid directory path. Please try again.")
