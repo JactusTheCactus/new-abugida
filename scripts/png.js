@@ -1,5 +1,5 @@
 import fs from 'fs-extra';
-const path = require('path');
+import path from 'path';
 const { createCanvas } = require('canvas');
 const pdfjsLib = require('pdfjs-dist/legacy/build/pdf.js');
 pdfjsLib.GlobalWorkerOptions.workerSrc = null;
