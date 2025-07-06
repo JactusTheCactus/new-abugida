@@ -91,6 +91,11 @@ And I must pause till it come back to me.`
 		}
 	);
 	const header = document.createElement("h1");
+	function pageBreak() {
+		const hr = document.createElement("hr")
+		hr.classList.add("page-break")
+		document.body.appendChild(hr)
+	}
 	header.innerHTML = `
 <i>Julius Caesar</i>
 Act III, Scene II
@@ -99,9 +104,9 @@ Act III, Scene II
 		.replace(/\n/g, "<br>")
 		.replace(/\b([\dIVXLCDM]+)\b/g, "<code>$1</code>")
 		.trim();
-	header.classList.add("page");
 	document.body.appendChild(header);
 	array.forEach(item => {
+		pageBreak();
 		item.div = document.createElement("div");
 		item.head = document.createElement("h2");
 		item.head.innerText = item.title;
@@ -113,8 +118,7 @@ Act III, Scene II
 		item.body.style.fontFamily = item.type;
 		item.div.appendChild(item.head);
 		item.div.appendChild(item.body);
-		item.div.classList.add("page");
-		document.body.appendChild(item.div)
+		document.body.appendChild(item.div);
 	});
 </script>
 

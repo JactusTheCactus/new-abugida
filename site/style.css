@@ -97,17 +97,21 @@ th {
 		center;
 }
 
-.table tr:nth-child(odd)td {
+.table tr:nth-child(odd) td {
 	border-bottom:
-		5px solid #000;
-}
-
-.table tr:nth-child(even) td {
-	border-top:
 		5px solid #000;
 }
 
 .table tr th {
 	border:
 		5px solid #000;
+}
+
+@media print {
+	.page-break {
+		break-before: page;
+		page-break-before: always;
+		border: 0;
+		height: 0;
+	}
 }
