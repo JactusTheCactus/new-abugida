@@ -3,6 +3,7 @@ import subprocess
 import json
 from fontTools.pens.transformPen import TransformPen
 import os
+import fontmake
 with open("uni.json","r",encoding="utf-8") as f:
 	uni = json.load(f)
 def ligName(ligs:list):
