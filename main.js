@@ -1,4 +1,5 @@
 const { spawn } = require("child_process");
+const path = require("path");
 const tasks = [
 	["python", ["script.py"]],
 	["node", ["pdf.js"]],
@@ -7,6 +8,7 @@ const tasks = [
 function runTask(index = 0) {
 	if (index >= tasks.length) return;
 	const [cmd, args] = tasks[index];
+	args[0] = path.join("scripts",args[0]);
 	const proc = spawn(cmd, args, { stdio: "inherit" });
 	proc.on("exit", (code) => {
 		console.log(`${[cmd, args].join(" ")} exited with code ${code}`);
