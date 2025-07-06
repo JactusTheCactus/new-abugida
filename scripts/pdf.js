@@ -11,7 +11,7 @@ function ensureBrowser() {
     const { executablePath } = browserFetcher.download(revision);
     return executablePath;
   } else {
-    const info = await browserFetcher.revisionInfo(revision);
+    const info = browserFetcher.revisionInfo(revision);
     return info.executablePath;
   }
 }
