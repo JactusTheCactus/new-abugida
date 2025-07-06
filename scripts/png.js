@@ -3,8 +3,8 @@ import path from 'path';
 import { createCanvas } from 'canvas';
 import * as pdfjsLib from 'pdfjs-dist/legacy/build/pdf.mjs';
 import * as pdfjsWorker from 'pdfjs-dist/build/pdf.worker.mjs';
-pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
 pdfjsLib.GlobalWorkerOptions.workerSrc = null;
+pdfjsLib.GlobalWorkerOptions.disableWorker = true;
 async function convertPdfToPng(pdfPath, outputDir) {
 	const data = new Uint8Array(await fs.readFile(pdfPath));
 	const loadingTask = pdfjsLib.getDocument({ data });
