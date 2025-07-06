@@ -9,22 +9,23 @@
 
 	<script>
 		const urls = [
-			'ipa.html',
-			'example.html'
+			"ipa.html",
+			"example.html"
 		];
 
 		function resizeIframe(iframe) {
 			try {
-				iframe.style.height = iframe.contentWindow.document.body.scrollHeight * 1.1 + 'px';
+				iframe.style.height = iframe.contentWindow.document.body.scrollHeight * 1.1 + "px";
 			} catch (e) {
-				console.warn('Unable to access iframe content for resizing (likely cross-origin).');
+				console.warn("Unable to access iframe content for resizing (likely cross-origin).");
 			}
 		}
 
 		urls.forEach((url, index) => {
-			const iframe = document.createElement('iframe');
+			const iframe = document.createElement("iframe");
 			iframe.src = url;
 			iframe.id = `iframe-${index}`;
+			iframe.classList.add("page");
 			iframe.onload = () => resizeIframe(iframe);
 			document.body.appendChild(iframe);
 		});

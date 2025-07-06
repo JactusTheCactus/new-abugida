@@ -9,22 +9,18 @@ import puppeteer from "puppeteer";
 			"index.pdf"
 		],
 		[
-			"https://jactusthecactus.github.io/new-abugida/ipa.html",
+			"https://jactusthecactus.github.io/new-abugida/site/html/ipa.html",
 			"ipa.pdf"
 		],
 		[
-			"https://jactusthecactus.github.io/new-abugida/example.html",
+			"https://jactusthecactus.github.io/new-abugida/site/html/example.html",
 			"example.pdf"
 		],
 	];
 	for (const [url, pdf] of pages) {
 		await page.goto(url, {
-			waitUntil: 'networkidle0'
+			waitUntil: "networkidle0"
 		});
 		await page.pdf({
 			path: path.join("site","pdf",pdf),
-			format: 'A4'
-		});
-	}
-	await browser.close();
-})();
+			format:"A4"});};await browser.close();})();

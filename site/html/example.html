@@ -8,10 +8,11 @@
 <body></body>
 <script>
 	let array = [];
-	array.push({
-		title: "Custom Abugida",
-		type: "Abugida",
-		text: `frenz, róminz, kuncrímen, lend mí yór írz.
+	array.push(
+		{
+			title: "Custom Abugida",
+			type: "Abugida",
+			text: `frenz, róminz, kuncrímen, lend mí yór írz.
 aí kum tú berí sízur, not tú préz him.
 ðu ívul ðat men dú livz aftur ðem.
 ðu gud iz oft intured wiþ ðér bónz -
@@ -46,11 +47,13 @@ wut coz wiþhóldz yú ðen tú mórn fór him?
 and men hav lost ðér rízun. bér wiþ mí.
 maí hart iz in ðu kofin ðér wiþ sízur,
 and aí must poz til it kum bak tú mí.`
-	});
-	array.push({
-		title: "Latin",
-		type: "Verdana",
-		text: `Friends, Romans, countrymen, lend me your ears.
+		}
+	);
+	array.push(
+		{
+			title: "Latin",
+			type: "Verdana",
+			text: `Friends, Romans, countrymen, lend me your ears.
 I come to bury Caesar, not to praise him.
 The evil that men do lives after them;
 The good is oft interrèd with their bones —
@@ -85,7 +88,8 @@ O judgment, thou art fled to brutish beasts,
 And men have lost their reason! Bear with me;
 My heart is in the coffin there with Caesar,
 And I must pause till it come back to me.`
-	});
+		}
+	);
 	const header = document.createElement("h1");
 	header.innerHTML = `
 <i>Julius Caesar</i>
@@ -95,10 +99,11 @@ Act III, Scene II
 		.replace(/\n/g, "<br>")
 		.replace(/\b([\dIVXLCDM]+)\b/g, "<code>$1</code>")
 		.trim();
+	header.classList.add("page");
 	document.body.appendChild(header);
 	array.forEach(item => {
 		item.div = document.createElement("div");
-		item.head = document.createElement('h2');
+		item.head = document.createElement("h2");
 		item.head.innerText = item.title;
 		item.head.style.fontFamily = "Verdana";
 		item.body = document.createElement("p");
@@ -108,6 +113,7 @@ Act III, Scene II
 		item.body.style.fontFamily = item.type;
 		item.div.appendChild(item.head);
 		item.div.appendChild(item.body);
+		item.div.classList.add("page");
 		document.body.appendChild(item.div)
 	});
 </script>

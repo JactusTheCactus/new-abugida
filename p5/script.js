@@ -5,14 +5,14 @@ function deepClean(value) {
 	if (Array.isArray(value)) {
 		const cleaned = value
 			.map(deepClean)
-			.filter(v => v !== null && v !== undefined && v !== false && v !== '' && !Number.isNaN(v));
+			.filter(v => v !== null && v !== undefined && v !== false && v !== "" && !Number.isNaN(v));
 		return cleaned.length ? cleaned : null;
 	}
 	if (value && typeof value === "object" && !Array.isArray(value)) {
 		const entries = Object.entries(value)
 			.map(([k, v]) => [k, deepClean(v)])
 			.filter(([, v]) =>
-				v !== null && v !== undefined && v !== false && v !== '' && !Number.isNaN(v)
+				v !== null && v !== undefined && v !== false && v !== "" && !Number.isNaN(v)
 			);
 		return entries.length ? Object.fromEntries(entries) : null;
 	}
@@ -21,7 +21,7 @@ function deepClean(value) {
 		value === null ||
 		value === undefined ||
 		value === false ||
-		value === '' ||
+		value === "" ||
 		Number.isNaN(value)
 	) {
 		return null;
@@ -35,7 +35,7 @@ function filePath(...args) {
 const maxX = 700;
 const maxY = 1000;
 const canvas = createCanvas(maxX, maxY);
-const ctx = canvas.getContext('2d');
+const ctx = canvas.getContext("2d");
 ctx.clearRect(0, 0, maxX, maxY);
 ctx.lineWidth = 2;
 function drawShape(points) {
@@ -44,8 +44,8 @@ function drawShape(points) {
 		y: maxY - p[1],
 	}));
 	// Fill polygon
-	ctx.fillStyle = 'rgba(100, 200, 255, 0.6)';
-	ctx.strokeStyle = 'black';
+	ctx.fillStyle = "rgba(100, 200, 255, 0.6)";
+	ctx.strokeStyle = "black";
 	ctx.beginPath();
 	ctx.moveTo(pointV[0].x, pointV[0].y);
 	for (let pt of pointV.slice(1)) {
@@ -55,14 +55,14 @@ function drawShape(points) {
 	ctx.fill();
 	ctx.stroke();
 	// Red circles
-	ctx.fillStyle = 'red';
+	ctx.fillStyle = "red";
 	for (let pt of pointV) {
 		ctx.beginPath();
 		ctx.arc(pt.x, pt.y, 4, 0, 2 * Math.PI);
 		ctx.fill();
 	}
 	// Black lines
-	ctx.strokeStyle = 'black';
+	ctx.strokeStyle = "black";
 	for (let i = 0; i < pointV.length; i++) {
 		let next = (i + 1) % pointV.length;
 		ctx.beginPath();
@@ -212,6 +212,6 @@ shapes.forEach(drawShape);
 const out = fs.createWriteStream(filePath("output.png"));
 const stream = canvas.createPNGStream();
 stream.pipe(out);
-out.on('finish', () => {
-	console.log('Saved output.png');
+out.on("finish", () => {
+	console.log("Saved output.png");
 });
