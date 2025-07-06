@@ -10,5 +10,6 @@
     "pdf2png-mp": "^0.5.4",
     "pdfjs-dist": "^3.9.179",
     "puppeteer": "^24.11.2"
-  },"type":"module"
+  },
+  "type": "module"
 }
