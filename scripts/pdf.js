@@ -8,7 +8,7 @@ function ensureBrowser() {
   const local = browserFetcher.localRevisions();
   if (!local.includes(revision)) {
     console.log(`📥 Downloading Chromium r${revision}…`);
-    const { executablePath } = await browserFetcher.download(revision);
+    const { executablePath } = browserFetcher.download(revision);
     return executablePath;
   } else {
     const info = await browserFetcher.revisionInfo(revision);
