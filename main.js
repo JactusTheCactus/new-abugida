@@ -4,6 +4,7 @@ const tasks = [
 	["python", ["script.py"]],
 	["node", ["pdf.js"]],
 	["node", ["png.js"]],
+	["python", ["README.py"]],
 ];
 function runTask(index = 0) {
 	if (index >= tasks.length) return;
