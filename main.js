@@ -1,5 +1,5 @@
 import { spawn } from "child_process";
-const path = require("path");
+import path from "path";
 const tasks = [
 	["python", ["script.py"]],
 	["node", ["pdf.js"]],
