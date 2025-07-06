@@ -5,7 +5,7 @@ import puppeteer from "puppeteer";
 function ensureBrowser() {
   const browserFetcher = puppeteer.createBrowserFetcher();
   const revision = puppeteer._preferredRevision;
-  const local = await browserFetcher.localRevisions();
+  const local = browserFetcher.localRevisions();
   if (!local.includes(revision)) {
     console.log(`📥 Downloading Chromium r${revision}…`);
     const { executablePath } = await browserFetcher.download(revision);
