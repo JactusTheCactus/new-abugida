@@ -33,6 +33,7 @@ jobs:
           npm uninstall puppeteer-core
           npm install puppeteer
           node -e "import('puppeteer').then(p => p.launch().then(b => b.close()))"
+          npm list puppeteer puppeteer-core || true
         # node main.js
       - name: Configure Git
         run: |
