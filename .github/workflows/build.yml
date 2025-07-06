@@ -42,6 +42,7 @@ jobs:
           git config --global user.email "github-gremlin@users.noreply.github.com"
       - name: Commit changes
         run: |
+          git rebase --skip
           git add .
           git commit -m "Auto-commit: update from script" || echo "No changes to commit"
           git pull --rebase
