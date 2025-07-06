@@ -2,6 +2,15 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
+			"name": "Run Main",
+			"program": "main.js",
+			"request": "launch",
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"type": "node"
+		},
+		{
 			"name": "PDF => PNG",
 			"program": "png.js",
 			"request": "launch",
@@ -20,7 +29,7 @@
 			"type": "node"
 		},
 		{
-			"name": "P5 Vector",
+			"name": "Vector",
 			"program": "p5/script.js",
 			"request": "launch",
 			"skipFiles": [
