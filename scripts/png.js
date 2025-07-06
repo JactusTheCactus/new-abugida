@@ -2,7 +2,7 @@ import fs from 'fs-extra';
 import path from 'path';
 import { createCanvas } from 'canvas';
 import * as pdfjsLib from 'pdfjs-dist/build/pdf.mjs';
-import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.mjs';
+import * as pdfjsWorker from 'pdfjs-dist/build/pdf.worker.mjs';
 pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
 pdfjsLib.GlobalWorkerOptions.workerSrc = null;
 async function convertPdfToPng(pdfPath, outputDir) {
