@@ -34,6 +34,8 @@ jobs:
 #          sudo apt-get install -y chromium-browser
       - name: Run Script
         run: |
+          rm -rf node_modules package-lock.json
+          npm install
           node main.js
       - name: Configure Git
         run: |
