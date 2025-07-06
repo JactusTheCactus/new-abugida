@@ -33,6 +33,7 @@ jobs:
           npm uninstall puppeteer-core
           npm install puppeteer
           npm list puppeteer puppeteer-core || true
+          npm list puppeteer || true
 #          node main.js
       - name: Configure Git
         run: |
