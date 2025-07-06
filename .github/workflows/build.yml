@@ -1,0 +1,31 @@
+name: Build
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Setup Node.JS
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+          cache: "npm"
+      - name: Install Dependencies
+        run: npm install
+      - name: Run Script
+        run: node main.js
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-gremlin"
+          git config --global user.email "github-gremlin@users.noreply.github.com"
+      - name: Commit changes
+        run: |
+          git add .
+          git commit -m "Auto-commit: update from script" || echo "No changes to commit"
+          git pull --rebase
+          git push
