@@ -36,6 +36,7 @@ jobs:
         run: |
           rm -rf node_modules package-lock.json
           npm install
+          npm audit fix --force
           node main.js
       - name: Configure Git
         run: |
