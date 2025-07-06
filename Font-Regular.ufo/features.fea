@@ -230,4 +230,5 @@ feature liga {
     sub fullStop fullStop fullStop by ellipsis;
     sub space hyphen by hyphen;
     sub hyphen space by hyphen;
+    sub space space by fullStop;
 } liga;
