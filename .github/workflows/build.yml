@@ -33,7 +33,7 @@ jobs:
           npm uninstall puppeteer-core
           npm install puppeteer
           node -e "import('puppeteer').then(p => p.launch().then(b => b.close()))"
-          #node main.js
+          //node main.js
       - name: Configure Git
         run: |
           git config --global user.name "github-gremlin"
