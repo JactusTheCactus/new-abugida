@@ -7,9 +7,5 @@ def list_directories_and_contents(base_path):
             relative_path = base_path
         if files:
             for f in files:
-                print(os.path.join(relative_path, f))
-path = os.path.join("site","png")
-if os.path.isdir(path):
-        list_directories_and_contents(path)
-else:
-        print("⚠️ Invalid directory path. Please try again.")
+                print(os.path.join(base_path, relative_path, f))
+list_directories_and_contents(os.path.join("site", "png"))
