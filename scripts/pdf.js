@@ -1,5 +1,5 @@
 import path from "path";
-import puppeteer from "puppeteer-core";  // explicitly puppeteer-core
+import puppeteer from "puppeteer";  // explicitly puppeteer-core
 
 (async () => {
   // 1) Turn ensureBrowser into an async function:
@@ -29,8 +29,7 @@ import puppeteer from "puppeteer-core";  // explicitly puppeteer-core
   const executablePath = await ensureBrowser();
 
   // 3) Launch Puppeteer with that path:
-  const browser = await puppeteer.launch({ executablePath });
-  log("Browser launched!");
+  const browser = await puppeteer.launch(); // No executablePath needed
 
   const pages = [
     "https://jactusthecactus.github.io/new-abugida/site/html/ipa.html",
