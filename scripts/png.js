@@ -1,6 +1,6 @@
 import fs from 'fs-extra';
 import path from 'path';
-const { createCanvas } = require('canvas');
+import { createCanvas } from 'canvas';
 const pdfjsLib = require('pdfjs-dist/legacy/build/pdf.js');
 pdfjsLib.GlobalWorkerOptions.workerSrc = null;
 async function convertPdfToPng(pdfPath, outputDir) {
