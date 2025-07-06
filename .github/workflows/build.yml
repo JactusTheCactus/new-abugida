@@ -32,7 +32,7 @@ jobs:
         run: |
 #          node -e "import('puppeteer').then(p => p.launch().then(b => b.close()))"
           npm list puppeteer puppeteer-core || true
-#          node main.js
+          node main.js
       - name: Configure Git
         run: |
           git config --global user.name "github-gremlin"
