@@ -2,8 +2,17 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "Print Pages",
-			"program": "print.js",
+			"name": "PDF => PNG",
+			"program": "png.js",
+			"request": "launch",
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"type": "node"
+		},
+		{
+			"name": "HTML => PDF",
+			"program": "pdf.js",
 			"request": "launch",
 			"skipFiles": [
 				"<node_internals>/**"
