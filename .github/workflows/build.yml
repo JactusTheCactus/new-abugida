@@ -30,6 +30,7 @@ jobs:
 #          pip install -r requirements.txt
       - name: Run Script
         run: |
+          npm install puppeteer
           npm uninstall puppeteer-core
           npm list puppeteer puppeteer-core || true
           npm list puppeteer || true
