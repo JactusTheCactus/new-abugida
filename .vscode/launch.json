@@ -10,9 +10,8 @@
 			],
 			"type": "node"
 		},
-		/*
 		{
-			"name": "PDF => PNG",
+			"name": "Step 3",
 			"program": "png.js",
 			"request": "launch",
 			"skipFiles": [
@@ -20,10 +19,8 @@
 			],
 			"type": "node"
 		},
-		*/
-		/*
 		{
-			"name": "HTML => PDF",
+			"name": "Step 2",
 			"program": "pdf.js",
 			"request": "launch",
 			"skipFiles": [
@@ -31,7 +28,6 @@
 			],
 			"type": "node"
 		},
-		*/
 		{
 			"name": "Vector",
 			"program": "p5/script.js",
@@ -41,14 +37,12 @@
 			],
 			"type": "node"
 		},
-		/*
 		{
-			"name": "Build",
+			"name": "Step 1",
 			"type": "debugpy",
 			"request": "launch",
 			"program": "script.py",
 			"console": "integratedTerminal"
 		}
-		*/
 	]
 }
