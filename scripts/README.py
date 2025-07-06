@@ -5,12 +5,10 @@ def list_directories_and_contents(base_path):
         relative_path = os.path.relpath(root, base_path)
         if relative_path == ".":
             relative_path = base_path
-        print(f"\n📁 Directory: {relative_path}")
         if files:
+            print(f"\n📁 Directory: {relative_path}")
             for f in files:
                 print(f"   └─ {f}")
-        else:
-            print("   └─ (empty)")
 path = os.path.join("site","png")
 if os.path.isdir(path):
         list_directories_and_contents(path)
