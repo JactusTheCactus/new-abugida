@@ -11,7 +11,10 @@ import puppeteer from "puppeteer";
     return Math.round((num + Number.EPSILON) * 100) + "%";
   }
 
-  const browser = await puppeteer.launch(); // Easy now!
+  const browser = await puppeteer.launch({
+  args: ['--no-sandbox', '--disable-setuid-sandbox'],
+  // executablePath: '/usr/bin/chromium-browser' // if you installed chromium manually
+});
   const pages = [
     "https://jactusthecactus.github.io/new-abugida/site/html/ipa.html",
     "https://jactusthecactus.github.io/new-abugida/site/html/example.html"
