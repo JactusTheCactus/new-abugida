@@ -7,6 +7,6 @@ def listDirectories(basePath):
             relativePath = basePath
         if files:
             for f in files:
-                list.append(os.path.join(basePath, relativePath, f))
+                list.append([basePath, relativePath, f])
 listDirectories(os.path.join("site", "png"))
 print(list)
