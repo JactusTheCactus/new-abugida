@@ -1,5 +1,3 @@
 
 # ipa
 # example
-# example
-# example
