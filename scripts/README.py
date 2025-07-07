@@ -20,4 +20,4 @@ for i in list:
         if last != current:
             f.write(current)
             last = current
-        f.write(f"\n![{i[1].upper()} page {fe.sub(r"page-", "", i[2])}]({os.path.join(i[0], i[1], i[2])})")
+        f.write(f'\n![{i[1].upper()} page {fe.sub(r"page-", "", i[2])}]({os.path.join(i[0], i[1], i[2])})')
