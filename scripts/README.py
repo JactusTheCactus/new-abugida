@@ -1,5 +1,5 @@
 import os
-
+list = []
 def list_directories_and_contents(base_path):
     for root, dirs, files in os.walk(base_path):
         relative_path = os.path.relpath(root, base_path)
@@ -7,5 +7,6 @@ def list_directories_and_contents(base_path):
             relative_path = base_path
         if files:
             for f in files:
-                print(os.path.join(base_path, relative_path, f))
+                list.append(os.path.join(basePath, relativePath, f))
 list_directories_and_contents(os.path.join("site", "png"))
+print(list)
