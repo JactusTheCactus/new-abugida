@@ -28,7 +28,6 @@ async function convertAllPdfsInDir(inputDir, outputDir) {
 		const pdfPath = path.join(inputDir, pdfFile);
 		await convertPdfToPng(pdfPath, outputDir);
 	}
-	console.log('All done!');
 }
 const inputDir = path.resolve("site","pdf");
 const outputDir = path.resolve("site","png");
