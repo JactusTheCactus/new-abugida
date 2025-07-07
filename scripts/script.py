@@ -65,8 +65,6 @@ the output and errors of the console command
 		"err": log.stderr
 	}
 	return output
-line = "=" * 50
-print(f"\n{line}\n")
 with open("data.json", "r", encoding="utf-8") as f:
 	glyphList = toTuple(json.load(f))
 with open("lig.json", "r", encoding="utf-8") as f:
