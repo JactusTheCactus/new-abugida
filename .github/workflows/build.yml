@@ -26,10 +26,10 @@ jobs:
           pip install pipreqs
           python -m  pipreqs.pipreqs --encoding utf-8  ./ --force
           pip install -r requirements.txt
-#      - name: Install Chrome
-#        run: |
-#          sudo apt-get update
-#          sudo apt-get install -y chromium-browser
+      - name: Install Chrome
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y chromium-browser
       - name: Run Script
         run: |
           rm -rf node_modules package-lock.json
