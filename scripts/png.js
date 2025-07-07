@@ -18,7 +18,6 @@ async function convertPdfToPng(pdfPath, outputDir) {
 		const outputFile = path.join(pdfOutputDir, `page-${pageNum}.png`);
 		const buffer = canvas.toBuffer('image/png');
 		await fs.writeFile(outputFile, buffer);
-		console.log(`Saved ${outputFile}`);
 	}
 }
 async function convertAllPdfsInDir(inputDir, outputDir) {
@@ -27,11 +26,10 @@ async function convertAllPdfsInDir(inputDir, outputDir) {
 	const pdfFiles = files.filter(f => f.toLowerCase().endsWith('.pdf'));
 	for (const pdfFile of pdfFiles) {
 		const pdfPath = path.join(inputDir, pdfFile);
-		console.log(`Converting ${pdfFile}...`);
 		await convertPdfToPng(pdfPath, outputDir);
 	}
 	console.log('All done!');
 }
 const inputDir = path.resolve("site","pdf");
 const outputDir = path.resolve("site","png");
-convertAllPdfsInDir(inputDir, outputDir).catch(console.error);
+convertAllPdfsInDir(inputDir,outputDir).catch(console.error);
