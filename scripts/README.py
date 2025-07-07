@@ -19,3 +19,4 @@ for i in list:
         if last != current:
             f.write(current)
             last = current
+        f.write(f"\n![{os.path.join(i)}]")
