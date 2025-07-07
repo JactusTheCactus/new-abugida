@@ -9,12 +9,11 @@ def listDirectories(basePath):
             for f in files:
                 list.append([basePath, relativePath, f])
 listDirectories(os.path.join("site", "png"))
-print(list)
 readmePath = os.path.join("README.md")
 with open(readmePath, "w", encoding = "utf-8") as f:
     f.write("")
+last = ""
 for i in list:
-    last = ""
     with open(readmePath, "a", encoding = "utf-8") as f:
         current = f"\n# {i[1]}"
         if last != current:
