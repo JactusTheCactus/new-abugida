@@ -1,9 +1,9 @@
 import { spawn } from "child_process";
 import path from "path";
 const tasks = [
-	["python", ["script.py"]],
+	/*["python", ["script.py"]],
 	["node", ["pdf.js"]],
-	["node", ["png.js"]],
+	["node", ["png.js"]],*/
 	["python", ["README.py"]],
 ];
 function runTask(index = 0) {
