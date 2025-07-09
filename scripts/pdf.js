@@ -10,7 +10,7 @@ import puppeteer from "puppeteer";
 	});
 	const pages = [
 		"https://jactusthecactus.github.io/new-abugida/site/html/ipa.html",
-		"https://jactusthecactus.github.io/new-abugida/site/html/example.html"
+		"https://jactusthecactus.github.io/new-abugida/site/html/caesar.html"
 	];
 	for (const url of pages) {
 		let pdf = url
