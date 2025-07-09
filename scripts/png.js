@@ -1,49 +1,36 @@
-import fs from 'fs-extra';
+import fs from 'fs';
 import path from 'path';
-import { createCanvas } from 'canvas';
-import * as pdfjsLib from 'pdfjs-dist/legacy/build/pdf.js';
+import pkg from 'pdf-poppler';
+const { Converter } = pkg;
+const inputDir = path.join("site", 'pdf');
+const outputDir = path.join("site", 'png');
+if (!fs.existsSync(outputDir)) {
+	fs.mkdirSync(outputDir, {
+		recursive: true
+	})
+};
+fs.readdirSync(inputDir).forEach(file => {
+	const ext = path.extname(file).toLowerCase();
+	if (ext === '.pdf') {
+		const baseName = path.basename(file, '.pdf');
+		const pdfPath = path.join(inputDir, file);
+		const pdfOutputDir = path.join(outputDir, baseName);
+		if (!fs.existsSync(pdfOutputDir)) {
+			fs.mkdirSync(pdfOutputDir, {
+				recursive: true
+			})
+		};
+		const converter = new Converter(pdfPath, {
+			format: 'png',
+			out_dir: pdfOutputDir,
+			out_prefix: 'page',
+			page: null
+		});
+		console.log(`Converting "${file}"...`);
+		converter
+			.convert()
+			.then(() => console.log(`Done: ${file}`))
+			.catch(error => console.error(`Error converting ${file}:`, error))
 
-class NodeCanvasFactory {
-  create(width, height) {
-    const canvas = createCanvas(width, height);
-    return { canvas, context: canvas.getContext('2d') };
-  }
-  reset(canvasAndCtx, width, height) {
-    canvasAndCtx.canvas.width  = width;
-    canvasAndCtx.canvas.height = height;
-  }
-  destroy(canvasAndCtx) {
-    canvasAndCtx.canvas.width  = 0;
-    canvasAndCtx.canvas.height = 0;
-    canvasAndCtx.canvas = null;
-    canvasAndCtx.context = null;
-  }
-}
-
-async function convertPdfToPng(pdfPath, outputDir) {
-  const data = new Uint8Array(await fs.readFile(pdfPath));
-  // Disable worker and load the PDF
-  const loadingTask = pdfjsLib.getDocument({ data, disableWorker: true });
-  const pdf = await loadingTask.promise;
-
-  const baseName = path.basename(pdfPath, '.pdf');
-  const pdfOut = path.join(outputDir, baseName);
-  await fs.ensureDir(pdfOut);
-
-  const canvasFactory = new NodeCanvasFactory();
-  for (let i = 1; i <= pdf.numPages; i++) {
-    const page = await pdf.getPage(i);
-    const viewport = page.getViewport({ scale: 2 });
-    // Create and clear a new canvas
-    const { canvas, context } = canvasFactory.create(
-      viewport.width,
-      viewport.height
-    );
-    const renderContext = { canvasContext: context, viewport, canvasFactory };
-    await page.render(renderContext).promise;
-
-    const imgBuf = canvas.toBuffer('image/png');
-    await fs.writeFile(path.join(pdfOut, `page-${i}.png`), imgBuf);
-    canvasFactory.destroy({ canvas, context });
-  }
-}
+	}
+})

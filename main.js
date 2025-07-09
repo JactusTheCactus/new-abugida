@@ -2,13 +2,17 @@ import { spawn } from "child_process";
 import path from "path";
 import os from "os";
 function completion() {
-	return `Completion: ${((tasks.length - runs.fail.length) / tasks.length) * 100}%`
-}
+	const count = tasks.length - runs.fail.length;
+	const num = Math.round(((count) / tasks.length) * 100);
+	return `Completion:\n\t${count} / ${tasks.length}\n\t${num}%`
+};
 const tasks = [
-	"script.py",
-	"pdf.js",
+	//"script.py",
+	/*==========*/
+	//"pdf.js",
 	"png.js",
-	"README.py",
+	/*==========*/
+	//"readme.py"
 ];
 let runs = {
 	success: [],
@@ -33,7 +37,15 @@ const preprocess = [
 	"npm install",
 	"npm update"
 ];
-async function preRun(stdout = false, stderr = false, index = 0) {
+function getFileType(file) {
+	const ext = path.extname(file);
+	return (
+		ext === '.py' ? 'python' :
+			ext === '.js' ? 'node' :
+				null
+	);
+};
+async function preRun({ stdout = false, stderr = false }, index = 0) {
 	return new Promise((resolve) => {
 		console.log(`${index} / ${preprocess.length}`);
 		if (index >= preprocess.length) {
@@ -45,65 +57,94 @@ async function preRun(stdout = false, stderr = false, index = 0) {
 			shell: true
 		});
 		if (stdout) {
-			run.stdout?.on('data', (data) => console.log(`OUT:\n${`${data}`.replace(/^/gm, "\t")}`))
+			run.stdout?.on('data', (data) => console.log(`${data}`.replace(/^/gm, "OUT:\t")))
 		};
 		if (stderr) {
-			run.stderr?.on('data', (data) => console.warn(`ERR:\n${`${data}`.replace(/^/gm, "\t")}`))
+			run.stderr?.on('data', (data) => console.warn(`${data}`.replace(/^/gm, "ERR:\t")))
 		}
 		run.on("exit", (code) => {
-			if (code !== 0) console.error(`FAIL:\n${`${command} failed with code ${code}`.replace(/^/gm, "\t")}`)
-			preRun(stdout, stderr, index + 1).then(resolve);
+			if (code !== 0) console.error(`${command} failed with code ${code}`.replace(/^/gm, "FAIL:\t"))
+			preRun({ stdout, stderr }, index + 1).then(resolve);
 		});
 	})
 }
-function getFileType(file) {
-	const ext = path.extname(file);
-	return (
-		ext === '.py' ? 'python' :
-			ext === '.js' ? 'node' :
-				null
-	);
-};
-async function runTask(index = 0) {
+async function runTask({ stdout = false, stderr = false }, index = 0) {
 	return new Promise((resolve) => {
 		if (index >= tasks.length) {
 			if (runs.fail.length > 0) {
 				console.warn(completion())
 			} else console.log(completion())
 			if (runs.success.length > 0) console.log("Success:\n\t" + runs.success.join("\n\t"))
-			if (runs.fail.length > 0) console.warn("Fail:\n\t" + runs.fail.join("\n\t"))
+			if (runs.fail.length > 0) console.warn("Fail:\n" + runs.fail.join("\n"))
 			return resolve();
 		};
 		const arg = tasks[index];
 		const cmd = getFileType(arg);
 		const args = path.join("scripts", arg);
-		const proc = spawn(cmd, [args], { stdio: "inherit" });
-		console.log(`${[cmd, args].join(" ")} has started`)
+		const proc = spawn(cmd, [args], { shell: false });
+		if (stdout) {
+			proc.stdout?.on('data', (data) => console.log(`${data}`.replace(/^/gm, "\nOUT:\t").replace(/\n+/g, "\n")))
+		};
+		if (stderr) {
+			proc.stderr?.on('data', (data) => console.warn(`${data}`.replace(/^/gm, "\nERR:\t").replace(/\n+/g, "\n")))
+		}
+		console.log(`Run ${arg}`)
 		proc.on("exit", (code) => {
-			console.log(`${[cmd, args].join(" ")} exited with code ${code}`);
 			if (code === 0) {
-				runs.success.push([cmd, args].join(" "))
-			} else runs.fail.push([cmd, args].join(" "))
-			runTask(index + 1);
+				runs.success.push(arg)
+			} else {
+				console.warn(`${arg} failed with code ${code}`);
+				runs.fail.push(arg)
+			};
+			runTask({ stdout, stderr }, index + 1);
 		});
 	})
 }
-async function postRun() {
+async function postRun({ stdout = false, stderr = false }, index = 0) {
 	return new Promise((resolve) => {
-		return resolve();
+		if (index >= /*.length*/1) {
+			return resolve();
+		};
+		const _ = spawn("", { shell: false });
+		if (stdout) {
+			_.stdout?.on('data', (data) => {
+				console.log(`${data}`.replace(/^/gm, "\nOUT:\t").replace(/\n+/g, "\n"))
+			})
+		};
+		if (stderr) {
+			_.stderr?.on('data', (data) => {
+				console.warn(`${data}`.replace(/^/gm, "\nERR:\t").replace(/\n+/g, "\n"))
+			})
+		}
+		_.on("exit", (code) => {
+			if (code !== 0) {
+				console.warn(`${arg} failed with code ${code}`);
+			};
+			console.log(`Run #${index} Ended ${!code ? "Successfully" : ""}`)
+			postRun({ stdout, stderr }, index + 1);
+		});
 	})
-}
-async function main() {
+};
+(async () => {
 	for (const f of [
-		() => preRun(false, true),
-		() => runTask(),
-		() => postRun()
+		/*() => preRun({
+			stdout: false,
+			stderr: true
+		}),*/
+		/*() => runTask({
+			stdout: true,
+			stderr: true
+		}),*/
+		() => postRun({
+			stdout: true,
+			stderr: true
+		})
 	]) {
 		try {
 			await f()
-		} catch (err) {
+		}
+		catch (err) {
 			console.error(err)
 		}
 	}
-};
-main();
+})();

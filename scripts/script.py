@@ -4,7 +4,7 @@ import json
 from fontTools.pens.transformPen import TransformPen
 import os
 import fontmake
-with open("uni.json","r",encoding="utf-8") as f:
+with open(os.path.join("data","uni.json"),"r",encoding="utf-8") as f:
 	uni = json.load(f)
 def ligName(ligs:list):
 	return "_".join(ligs)
@@ -65,12 +65,12 @@ the output and errors of the console command
 		"err": log.stderr
 	}
 	return output
-with open("data.json", "r", encoding="utf-8") as f:
+with open(os.path.join("data","data.json"), "r", encoding="utf-8") as f:
 	glyphList = toTuple(json.load(f))
-with open("lig.json", "r", encoding="utf-8") as f:
+with open(os.path.join("data","lig.json"), "r", encoding="utf-8") as f:
 	symbolLigs = json.load(f)
 font = Font()
-with open("char.json", "r",encoding="utf-8") as f:
+with open(os.path.join("data","char.json"), "r",encoding="utf-8") as f:
 	char = json.load(f)
 consonants, vowels, symbols = char["consonants"], char["vowels"], char["grammar"]
 for g in glyphList:
