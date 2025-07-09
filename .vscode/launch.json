@@ -3,7 +3,7 @@
 	"configurations": [
 		{
 			"name": "Run Main",
-			"program": "main.js",
+			"program": "${workspaceFolder}/main.js",
 			"request": "launch",
 			"skipFiles": [
 				"<node_internals>/**"
@@ -12,7 +12,7 @@
 		},
 		{
 			"name": "Vector",
-			"program": "p5/script.js",
+			"program": "${workspaceFolder}/p5/script.js",
 			"request": "launch",
 			"skipFiles": [
 				"<node_internals>/**"
