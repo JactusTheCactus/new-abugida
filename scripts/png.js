@@ -2,7 +2,7 @@ import fs from "fs-extra";
 import path from "path";
 import pkg from "child_process";
 const { execFile } = pkg;
-import pdftoppm from "pdftoppm";
+import pdf from "poppler-utils";
 const inputDir = path.join(".", "site", "pdf");
 const outputDir = path.join(".", "site", "png");
 async function convertPDF(pdfFile) {
