@@ -14,7 +14,8 @@ async function preRun({ stdout = false, stderr = false }, index = 0) {
 		`${pip} install -r ./scripts/requirements.txt`,
 		`rm -rf node_modules package-lock.json`,
 		`npm install`,
-		`npm update`
+		`npm update`,
+`npm install poppler-utils`
 	];
 	return new Promise((resolve) => {
 		console.log(`${index} / ${preprocess.length}`);
