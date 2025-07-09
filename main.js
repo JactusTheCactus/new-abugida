@@ -6,6 +6,7 @@ const python = env("python");
 const pip = env("pip");
 async function preRun({ stdout = false, stderr = false }, index = 0) {
 	const preprocess = [
+		`python3 -m venv ${vEnv}`,
 		`${pip} install requests`,
 		`${python} -m pip install --upgrade pip`,
 		`${pip} install pipreqs`,
