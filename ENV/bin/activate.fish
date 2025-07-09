@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV /home/devin/projects/new-abugida/ENV
+set -gx VIRTUAL_ENV /home/runner/work/new-abugida/new-abugida/ENV
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/"bin $PATH
