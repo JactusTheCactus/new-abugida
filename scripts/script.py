@@ -65,6 +65,7 @@ the output and errors of the console command
 		"err": log.stderr
 	}
 	return output
+vEnv = "ENV"
 with open(os.path.join("data","data.json"), "r", encoding="utf-8") as f:
 	glyphList = toTuple(json.load(f))
 with open(os.path.join("data","lig.json"), "r", encoding="utf-8") as f:
@@ -145,7 +146,7 @@ for v in vowels:
         setWidth(v_glyph)
 save()
 font = Font(ufoName)
-output = cmdRun(f"fontmake -u {ufoName} -o otf")
+output = cmdRun(f"./{vEnv}/bin/fontmake -u {ufoName} -o otf")
 for i in ["out","err"]:
 	with open(f"logs/std{i}.md","w") as f:
 		content = (output[i] if output[i] else f"<STD{i.upper()}.null>").strip()
