@@ -13,16 +13,17 @@ def listDirectories(basePath):
 listDirectories(os.path.join("site", "png"))
 readmePath = os.path.join("README.md")
 last = ""
+list = sorted(list, key = lambda x: (x[1], x[2]))
 for i in list:
-	for [r ,p] in [
-		[r"-", " "]
-	]:
-		i = re.sub(r, p, i)
+	root, name, page = i
+	path = os.path.join(root, name, page)
+	for [r ,p] in [[r"-", " "]]:
+		name = re.sub(r, p, name)
 	with open(readmePath, "a", encoding = "utf-8") as f:
-		current = f"\n## `{i[1].upper()}`"
+		current = f"\n## `{name.upper()}`"
 		if last != current:
 			readme += current
 			last = current
-		readme += f"\n![{i[1]} {i[2]}]({os.path.join(i[0], i[1], i[2])})"
+		readme += f"\n![{name} {page}]({path})"
 with open(readmePath, "w", encoding = "utf-8") as f:
 	f.write(readme)

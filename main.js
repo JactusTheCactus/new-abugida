@@ -99,9 +99,9 @@ async function runTask(
 		}[ext] || null
 	};
 	const tasks = [
-		"script.py",
-		"pdf.js",
-		"png.js",
+		//"script.py",
+		//"pdf.js",
+		//"png.js",
 		"readme.py"
 	];
 	return new Promise((resolve) => {
@@ -213,18 +213,18 @@ async function postRun(
 };
 (async () => {
 	try {
-		await preRun({
+		/*await preRun({
 			stdout: false,
 			stderr: false
-		});
+		});*/
 		await runTask({
 			stdout: true,
 			stderr: true
 		});
-		await postRun({
+		/*await postRun({
 			stdout: false,
 			stderr: false
-		});
+		});*/
 	}
 	catch (err) {
 		console.error(err)
