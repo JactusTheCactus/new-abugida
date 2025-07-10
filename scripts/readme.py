@@ -8,7 +8,7 @@ readme = """
 	}
 </style>
 """
-readme += "\n<!--# Unnamed Abugida"
+readme += "\n# Unnamed Abugida"
 def listDirectories(basePath):
 	for root, dirs, files in os.walk(basePath):
 		relativePath = os.path.relpath(root, basePath)
@@ -32,7 +32,7 @@ for i in list:
 			readme += current
 			last = current
 		readme += f"\n![{name} {page}]({path})"
-readme += "-->\n"+"""
+readme += "\n"+"""
 # Future Script Plans
 1. ```
 	Type: Abugida | Alphabet
