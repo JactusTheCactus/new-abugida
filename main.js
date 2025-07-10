@@ -218,8 +218,8 @@ async function postRun(
 			stderr: false
 		});
 		await runTask({
-			stdout: false,
-			stderr: false
+			stdout: true,
+			stderr: true
 		});
 		await postRun({
 			stdout: false,
