@@ -14,6 +14,10 @@ listDirectories(os.path.join("site", "png"))
 readmePath = os.path.join("README.md")
 last = ""
 for i in list:
+	for [r ,p] in [
+		[r"-", " "]
+	]:
+		i = re.sub(r, p, i)
 	with open(readmePath, "a", encoding = "utf-8") as f:
 		current = f"\n## `{i[1].upper()}`"
 		if last != current:
