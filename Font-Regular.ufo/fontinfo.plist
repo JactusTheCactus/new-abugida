@@ -28,6 +28,10 @@
     <array/>
     <key>postscriptStemSnapV</key>
     <array/>
+    <key>styleMapFamilyName</key>
+    <string>Font</string>
+    <key>styleMapStyleName</key>
+    <string>regular</string>
     <key>styleName</key>
     <string>Regular</string>
     <key>unitsPerEm</key>

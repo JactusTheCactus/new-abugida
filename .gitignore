@@ -1,5 +1,5 @@
 ENV/
 node_modules/
 .vscode/
-Font-Regular.ufo/
+*.ufo/
 logs/

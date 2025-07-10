@@ -91,7 +91,9 @@ for g in glyphList:
 		pen.closePath()
 	setWidth(glyph)
 font.info.familyName = "Font"
+font.info.styleMapFamilyName = f"{font.info.familyName}"
 font.info.styleName = "Regular"
+font.info.styleMapStyleName = f"{font.info.styleName.lower()}"
 font.info.fullName = f"{font.info.familyName} {font.info.styleName}"
 font.info.postscriptFontName = f"{font.info.familyName}-{font.info.styleName}"
 font.info.openTypeNameVersion = "Version 1.0"
