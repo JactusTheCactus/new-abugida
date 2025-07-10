@@ -11,22 +11,35 @@ async function convertPDF(pdfFile) {
     return new Promise((resolve, reject) => {
         execFile(
             "pdftoppm",
-            ["-png", "-r", "150", pdfPath, path.join(outputSubdir, "page")],
+            [
+                "-png",
+                "-r",
+                "150",
+                pdfPath,
+                path.join(
+                    outputSubdir,
+                    "page"
+                )
+            ],
             (error, stdout, stderr) => {
                 if (error) {
                     reject(`Error converting ${pdfFile}: ${stderr || error.message}`);
                     return;
                 }
-                fs.readdir(outputSubdir).then(files => {
-                    const pngFiles = files.filter(f => f.match(/^page-\d+\.png$/));
-                    if (pngFiles.length === 1) {
-                        const oldPath = path.join(outputSubdir, pngFiles[0]);
-                        const newPath = path.join(outputSubdir, "page.png");
-                        fs.rename(oldPath, newPath).then(resolve).catch(reject);
-                    } else {
-                        resolve();
-                    }
-                }).catch(reject);
+                fs.readdir(outputSubdir)
+                    .then(files => {
+                        const pngFiles = files.filter(f => f.match(/^page-\d+\.png$/));
+                        if (pngFiles.length === 1) {
+                            const oldPath = path.join(outputSubdir, pngFiles[0]);
+                            const newPath = path.join(outputSubdir, "page.png");
+                            fs.rename(oldPath, newPath)
+                                .then(resolve)
+                                .catch(reject);
+                        } else {
+                            resolve();
+                        }
+                    })
+                    .catch(reject);
             }
         );
     });

@@ -1,10 +1,23 @@
 import { spawn } from "child_process";
 import path from "path";
 const vEnv = "ENV";
-function env(input) { return path.join(".", vEnv, "bin", input) }
+function env(input) {
+	return path.join(
+		".",
+		vEnv,
+		"bin",
+		input
+	)
+}
 const python = env("python");
 const pip = env("pip");
-async function preRun({ stdout = false, stderr = false }, index = 0) {
+async function preRun(
+	{
+		stdout = false,
+		stderr = false
+	},
+	index = 0
+) {
 	const preprocess = [
 		`python3 -m venv ${vEnv}`,
 		`${pip} install requests`,
@@ -15,7 +28,7 @@ async function preRun({ stdout = false, stderr = false }, index = 0) {
 		`rm -rf node_modules package-lock.json`,
 		`npm install`,
 		`npm update`,
-`npm install pdf-poppler`
+		`npm install pdf-poppler`
 	];
 	return new Promise((resolve) => {
 		console.log(`${index} / ${preprocess.length}`);
@@ -24,9 +37,11 @@ async function preRun({ stdout = false, stderr = false }, index = 0) {
 		}
 		const command = preprocess[index]
 		console.log(command);
-		const run = spawn(command, {
+		const run = spawn(
+			command, {
 			shell: true
-		});
+		}
+		);
 		if (stdout) {
 			run.stdout?.on('data', (data) => {
 				data = `${data}`;
@@ -52,12 +67,30 @@ async function preRun({ stdout = false, stderr = false }, index = 0) {
 			})
 		}
 		run.on("exit", (code) => {
-			if (code !== 0) console.error(`${command} failed with code ${code}`.replace(/^/gm, "FAIL:\t"))
-			preRun({ stdout, stderr }, index + 1).then(resolve);
+			if (code !== 0) {
+				console.error(
+					`${command} failed with code ${code}`
+						.replace(/^/gm, "FAIL:\t")
+				)
+			}
+			preRun(
+				{
+					stdout,
+					stderr
+				},
+				index + 1
+			)
+				.then(resolve);
 		});
 	})
 }
-async function runTask({ stdout = false, stderr = false }, index = 0) {
+async function runTask(
+	{
+		stdout = false,
+		stderr = false
+	},
+	index = 0
+) {
 	function getFileType(file) {
 		const ext = path.extname(file);
 		return {
@@ -111,11 +144,24 @@ async function runTask({ stdout = false, stderr = false }, index = 0) {
 			} else {
 				console.warn(`${arg} failed with code ${code}`);
 			};
-			runTask({ stdout, stderr }, index + 1).then(resolve);
+			runTask(
+				{
+					stdout,
+					stderr
+				},
+				index + 1
+			)
+				.then(resolve);
 		});
 	})
 }
-async function postRun({ stdout = false, stderr = false }, index = 0) {
+async function postRun(
+	{
+		stdout = false,
+		stderr = false
+	},
+	index = 0
+) {
 	const list = [
 		`echo "Done!"`
 	]
@@ -154,7 +200,14 @@ async function postRun({ stdout = false, stderr = false }, index = 0) {
 			if (code !== 0) {
 				console.warn(`${arg} failed with code ${code}`);
 			};
-			postRun({ stdout, stderr }, index + 1).then(resolve);
+			postRun(
+				{
+					stdout,
+					stderr
+				},
+				index + 1
+			)
+				.then(resolve);
 		});
 	})
 };
@@ -165,8 +218,8 @@ async function postRun({ stdout = false, stderr = false }, index = 0) {
 			stderr: false
 		});
 		await runTask({
-			stdout: true,
-			stderr: true
+			stdout: false,
+			stderr: false
 		});
 		await postRun({
 			stdout: false,

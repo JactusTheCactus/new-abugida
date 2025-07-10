@@ -4,6 +4,7 @@ import json
 from fontTools.pens.transformPen import TransformPen
 import os
 import fontmake
+import re
 with open(os.path.join("data","uni.json"),"r",encoding="utf-8") as f:
 	uni = json.load(f)
 def ligName(ligs:list):
@@ -148,11 +149,17 @@ save()
 font = Font(ufoName)
 output = cmdRun(f"./{vEnv}/bin/fontmake -u {ufoName} -o otf")
 for i in ["out","err"]:
-	with open(f"logs/std{i}.md","w") as f:
-		content = (output[i] if output[i] else f"<STD{i.upper()}.null>").strip()
+	with open(f"logs/{i}.md","w") as f:
+		if output[i]:
+			content = output[i]
+		else:
+			content = "null"
+		content = content.strip()
 		format = f"""
 ```bash
-{content}
+<STD.{i}>
+{re.sub(r"^","\t",content,flags=re.M)}
+</STD.{i}>
 ```
 """
 		f.write(format.strip())
