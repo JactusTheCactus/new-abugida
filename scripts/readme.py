@@ -1,7 +1,14 @@
 import os
 import re
 list = []
-readme = "# Unnamed Abugida"
+readme = """
+<style>
+	body {
+		font: 20px Verdana;
+	}
+</style>
+"""
+readme += "\n<!--# Unnamed Abugida"
 def listDirectories(basePath):
 	for root, dirs, files in os.walk(basePath):
 		relativePath = os.path.relpath(root, basePath)
@@ -25,5 +32,18 @@ for i in list:
 			readme += current
 			last = current
 		readme += f"\n![{name} {page}]({path})"
+readme += "-->\n"+"""
+# Future Script Plans
+1. ```
+	Type: Abugida | Alphabet
+	Glyph Variants:
+		Solo
+		& Initial?
+		& Medial
+		& Final?
+	Direction: Down | Right => Boustrophedon?
+	```
+"""
+readme = re.sub(r"\n+","\n",readme.strip())
 with open(readmePath, "w", encoding = "utf-8") as f:
 	f.write(readme)
