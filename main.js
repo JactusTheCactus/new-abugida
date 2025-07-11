@@ -226,145 +226,15 @@ npm install pdf-poppler
 			});
 		})
 	};
-<<<<<<< HEAD
-	const tasks = [
-		"script.py",
-		"pdf.js",
-		"png.js",
-		"readme.py"
-	];
-	return new Promise((resolve) => {
-		console.log(`${index} / ${tasks.length}`)
-		if (index >= tasks.length) {
-			return resolve();
-		};
-		const arg = tasks[index];
-		const cmd = getFileType(arg);
-		const args = path.join("scripts", arg);
-		const run = spawn(cmd, [args], { shell: false });
-		if (stdout) {
-			run.stdout?.on('data', (data) => {
-				data = `${data}`;
-				data = data
-					.replace(/^[\s]+/gm, "")
-					.replace(/\n+/g, "\n")
-					.trim();
-				if (data) {
-					console.log(data)
-				}
-			})
-		};
-		if (stderr) {
-			run.stderr?.on('data', (data) => {
-				data = `${data}`
-				data = data
-					.replace(/^[\s]+/gm, "")
-					.replace(/\n+/g, "\n")
-					.trim();
-				if (data) {
-					console.warn(data)
-				}
-			})
-		}
-		console.log(`${arg} started`)
-		run.on("exit", (code) => {
-			if (code === 0) {
-				console.log(`${arg} completed`);
-			} else {
-				console.warn(`${arg} failed with code ${code}`);
-			};
-			runTask(
-				{
-					stdout,
-					stderr
-				},
-				index + 1
-			)
-				.then(resolve);
-		});
-	})
-}
-async function postRun(
-	{
-		stdout = false,
-		stderr = false
-	},
-	index = 0
-) {
-	const list = [
-		`echo "Done!"`
-	]
-	return new Promise((resolve) => {
-		if (index >= list.length) {
-			console.log("Complete!")
-			return resolve();
-		};
-		const arg = list[index];
-		const run = spawn(arg, { shell: true });
-		if (stdout) {
-			run.stdout?.on('data', (data) => {
-				data = `${data}`;
-				data = data
-					.replace(/^[\s]+/gm, "")
-					.replace(/\n+/g, "\n")
-					.trim();
-				if (data) {
-					console.log(data)
-				}
-			})
-		};
-		if (stderr) {
-			run.stderr?.on('data', (data) => {
-				data = `${data}`
-				data = data
-					.replace(/^[\s]+/gm, "")
-					.replace(/\n+/g, "\n")
-					.trim();
-				if (data) {
-					console.warn(data)
-				}
-			})
-		}
-		run.on("exit", (code) => {
-			if (code !== 0) {
-				console.warn(`${arg} failed with code ${code}`);
-			};
-			postRun(
-				{
-					stdout,
-					stderr
-				},
-				index + 1
-			)
-				.then(resolve);
-		});
-	})
-};
-(async () => {
-	try {
-		await preRun({
-			stdout: false,
-			stderr: false
-		});
-		await runTask({
-			stdout: true,
-			stderr: true
-		});
-		await postRun({
-			stdout: false,
-			stderr: false
-		});
-=======
 	try {
 		const run = [
-			[true, false, false],
 			[true, true, true],
-			[true, false, false]
+			[true, true, true],
+			[true, true, true]
 		];
 		if (run[0][0]) await preRun({ stdout: run[0][1], stderr: run[0][2] });
 		if (run[1][0]) await runTask({ stdout: run[1][1], stderr: run[1][2] });
 		if (run[2][0]) await postRun({ stdout: run[2][1], stderr: run[2][2] });
->>>>>>> 225b6079 (-)
 	}
 	catch (err) {
 		console.error(err)

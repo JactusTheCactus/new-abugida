@@ -23,7 +23,7 @@ jobs:
         run: |
           rm -rf node_modules package-lock.json
           npm install
-          node main.js
+          node main.js abugidaR alphabetD
       - name: Force add, commit, and push all changes
         run: |
           git config user.name "github-actions[bot]"
