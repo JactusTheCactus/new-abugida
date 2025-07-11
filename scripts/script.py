@@ -1,11 +1,23 @@
-from defcon import Font
+from defcon import Font#type:ignore
 import subprocess
 import json
-from fontTools.pens.transformPen import TransformPen
+from fontTools.pens.transformPen import TransformPen#type:ignore
 import os
-import fontmake
-import re
-with open(os.path.join("data","uni.json"),"r",encoding="utf-8") as f:
+import sys
+import fontmake#type:ignore
+from pathlib import Path
+args = sys.argv[1:]
+script = args[0] if args else ""
+print(script)
+dir = os.path.join(".","fonts",script) if script else "."
+vEnv = os.path.join(".","fonts",script,"ENV") if script else os.path.join(".","ENV")
+def jsonFile(file):
+	filePath = Path(".","fonts" if script else "","data",file + ".json")
+	if not os.path.exists(filePath):
+		filePath.parent.mkdir(parents = True, exist_ok = True)
+		filePath.write_text("{}")
+	return os.path.join(filePath)
+with open(jsonFile("uni"),"r",encoding="utf-8") as f:
 	uni = json.load(f)
 def ligName(ligs:list):
 	return "_".join(ligs)
@@ -66,15 +78,16 @@ the output and errors of the console command
 		"err": log.stderr
 	}
 	return output
-vEnv = "ENV"
-with open(os.path.join("data","data.json"), "r", encoding="utf-8") as f:
+with open(jsonFile("data"), "r", encoding="utf-8") as f:
 	glyphList = toTuple(json.load(f))
-with open(os.path.join("data","lig.json"), "r", encoding="utf-8") as f:
+with open(jsonFile("lig"), "r", encoding="utf-8") as f:
 	symbolLigs = json.load(f)
 font = Font()
-with open(os.path.join("data","char.json"), "r",encoding="utf-8") as f:
+with open(jsonFile("char"), "r",encoding="utf-8") as f:
 	char = json.load(f)
-consonants, vowels, symbols = char["consonants"], char["vowels"], char["grammar"]
+con = char.get("consonants") or {}
+vow = char.get("vowels") or {}
+sym = char.get("grammar") or {}
 for g in glyphList:
 	glyphList[g].append([
 		[0,0],
@@ -90,7 +103,9 @@ for g in glyphList:
 			pen.moveTo(pt) if i == 0 else pen.lineTo(pt)
 		pen.closePath()
 	setWidth(glyph)
-font.info.familyName = "Font"
+with open(jsonFile("options"), "r", encoding="utf-8") as f:
+	options = json.load(f)
+font.info.familyName = options.get("family") or "Unnamed"
 font.info.styleMapFamilyName = f"{font.info.familyName}"
 font.info.styleName = "Regular"
 font.info.styleMapStyleName = f"{font.info.styleName.lower()}"
@@ -109,14 +124,12 @@ def save():
 Saves the font at the location defined in `ufoName`
 	"""
 	font.save(ufoName)
-if not os.path.exists(ufoName):
-	os.mkdir(ufoName)
 ligList = []
 fea = f"{ufoName}/features.fea"
 with open(fea, "w", encoding="utf-8") as f:
 	f.write("feature liga {\n")
-	for c in consonants:
-		for v in vowels:
+	for c in con:
+		for v in vow:
 			lig_name = ligName([c,v])
 			f.write(f"    sub {c} {v} by {lig_name}.liga;\n")
 			lig_name = lig_name + ".liga"
@@ -138,7 +151,7 @@ with open(fea, "w", encoding="utf-8") as f:
 with open(fea) as f:
     feaText = f.read()
 font.features.text = feaText
-for v in vowels:
+for v in vow:
     x_v_name = ligName(["x", v]) + ".liga"
     if x_v_name in font and v in font:
         v_glyph = font[v]
@@ -147,21 +160,7 @@ for v in vowels:
         pen = v_glyph.getPen()
         x_v_glyph.draw(pen)
         setWidth(v_glyph)
-save()
 font = Font(ufoName)
-output = cmdRun(f"./{vEnv}/bin/fontmake -u {ufoName} -o otf")
-for i in ["out","err"]:
-	with open(f"logs/{i}.md","w") as f:
-		if output[i]:
-			content = output[i]
-		else:
-			content = "null"
-		content = content.strip()
-		format = f"""
-```bash
-<STD.{i}>
-{re.sub(r"^","\t",content,flags=re.M)}
-</STD.{i}>
-```
-"""
-		f.write(format.strip())
+save()
+for i in sorted(["otf","ttf"]):
+	cmdRun(f"{vEnv}/bin/fontmake -u {ufoName} -o {i}")

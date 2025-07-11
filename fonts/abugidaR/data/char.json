@@ -1,0 +1,48 @@
+{
+    "consonants": [
+        "b",
+        "c",
+        "d",
+        "eth",
+        "f",
+        "g",
+        "h",
+        "j",
+        "k",
+        "l",
+        "m",
+        "n",
+        "eng",
+        "p",
+        "r",
+        "s",
+        "sacute",
+        "t",
+        "v",
+        "w",
+        "x",
+        "y",
+        "z",
+        "zacute",
+        "thorn"
+    ],
+    "vowels": [
+        "a",
+        "e",
+        "eacute",
+        "i",
+        "iacute",
+        "o",
+        "oacute",
+        "u",
+        "uacute"
+    ],
+    "grammar": [
+        "space",
+        "fullStop",
+        "comma",
+        "question",
+        "ellipsis",
+        "hyphen"
+    ]
+}

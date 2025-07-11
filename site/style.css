@@ -1,8 +1,15 @@
 @font-face {
 	font-family:
-		Abugida;
+		AbugidaRttf;
 	src:
-		url("../master_otf/Font-Regular.otf") format("opentype");
+		url("../fonts/abugidaR/master_ttf/AbugidaR-Regular.ttf") format("truetype");
+}
+
+@font-face {
+	font-family:
+		AbugidaRotf;
+	src:
+		url("../fonts/abugidaR/master_otf/AbugidaR-Regular.otf") format("opentype");
 }
 
 body {
@@ -23,9 +30,9 @@ table {
 		nowrap;
 }
 
-.Abugida {
+.AbugidaR {
 	font-family:
-		Abugida;
+		AbugidaRotf, AbugidaRttf;
 }
 
 h1,
@@ -67,7 +74,7 @@ iframe {
 
 .table tr:nth-child(even) {
 	font-family:
-		Abugida;
+		AbugidaR;
 	white-space:
 		pre;
 }

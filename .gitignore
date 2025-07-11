@@ -1,4 +1,4 @@
-ENV/
+**/ENV/
 node_modules/
 .vscode/
 *.ufo/

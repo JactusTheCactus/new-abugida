@@ -49,13 +49,10 @@ async function convertAll() {
         const files = await fs.readdir(inputDir);
         const pdfFiles = files.filter(f => f.endsWith(".pdf"));
         if (!pdfFiles.length) {
-            console.log("No PDFs found in", inputDir);
             return;
         }
         for (const pdfFile of pdfFiles) {
-            console.log(`Converting ${pdfFile}...`);
             await convertPDF(pdfFile);
-            console.log(`Done: ${pdfFile}`);
         }
     } catch (err) {
         console.error("Error:", err);
