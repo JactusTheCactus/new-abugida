@@ -1,3 +1,3 @@
-defcon==0.12.1
-fontmake==3.10.1
-fonttools==4.58.5
+defcon==0.12.2
+fontmake==3.11.0
+fonttools==4.59.2
